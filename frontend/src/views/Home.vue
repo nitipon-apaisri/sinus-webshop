@@ -1,46 +1,25 @@
 <template>
-  <div class="home">
-    <form @submit.prevent="login">
-      <input type="text" name="email" placeholder="Email" v-model="email" />
-      <input
-        type="password"
-        name="password"
-        placeholder="password"
-        v-model="password"
-      />
-      <button>Log in</button>
-    </form>
-    <button @click="getUser">Get User</button>
+  <div class="container">
+    <Hero />
+    <Brands />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import { mapGetters } from "vuex";
+import Hero from "@/components/Hero";
+import Brands from "@/components/Brands";
 export default {
-  data() {
-    return {
-      email: "customer@example.com",
-      password: "password",
-    };
-  },
-  name: "Home",
-  methods: {
-    login() {
-      const payload = {
-        email: this.email,
-        password: this.password,
-      };
-      this.$store.dispatch("submitUser", payload);
-      // ...mapActions(["submitUser"], payload),
-    },
-    getUser() {
-      this.$store.dispatch("getUser", this.getToken);
-      // console.log(this.getToken);
-    },
-  },
-  computed: {
-    ...mapGetters(["getToken"]),
+  components: {
+    Hero,
+    Brands,
   },
 };
 </script>
+<style lang="scss" scoped>
+.container {
+  width: 100%;
+  .hero {
+    margin: 24px 0;
+  }
+}
+</style>
