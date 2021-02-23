@@ -1,29 +1,46 @@
-<<<<<<< HEAD
-<template>
-  <div class="home"></div>
-</template>
-
-<script>
-// @ is an alias to /src
-
-export default {};
-</script>
-=======
 <template>
   <div class="home">
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <form @submit.prevent="login">
+      <input type="text" name="email" placeholder="Email" v-model="email" />
+      <input
+        type="password"
+        name="password"
+        placeholder="password"
+        v-model="password"
+      />
+      <button>Log in</button>
+    </form>
+    <button @click="getUser">Get User</button>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
+import { mapGetters } from "vuex";
 export default {
+  data() {
+    return {
+      email: "customer@example.com",
+      password: "password",
+    };
+  },
   name: "Home",
-  components: {
-    HelloWorld,
+  methods: {
+    login() {
+      const payload = {
+        email: this.email,
+        password: this.password,
+      };
+      this.$store.dispatch("submitUser", payload);
+      // ...mapActions(["submitUser"], payload),
+    },
+    getUser() {
+      this.$store.dispatch("getUser", this.getToken);
+      // console.log(this.getToken);
+    },
+  },
+  computed: {
+    ...mapGetters(["getToken"]),
   },
 };
 </script>
->>>>>>> 763ce06fd5acc8c74728eb96c02a25e082ef99e6
