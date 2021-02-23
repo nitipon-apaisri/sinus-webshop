@@ -22,6 +22,9 @@ body {
     margin: 0;
     font-family: "Noto Sans", sans-serif;
   }
+  button {
+    cursor: pointer;
+  }
   #app {
     max-width: 1440px;
     font-family: Avenir, Helvetica, Arial, sans-serif;

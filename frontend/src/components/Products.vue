@@ -18,7 +18,9 @@
               <p>{{ product.category }}</p>
             </div>
             <div class="product-footer">
-              <font-awesome-icon :icon="['fas', 'shopping-bag']" />
+              <button>
+                <font-awesome-icon :icon="['fas', 'shopping-bag']" />
+              </button>
               <h5>{{ product.price }} SEK</h5>
             </div>
           </div>
@@ -95,10 +97,11 @@ export default {
             color: #333333;
             display: flex;
             justify-content: space-between;
-            svg {
+            button {
+              border: 1px solid transparent;
               font-size: 1rem;
               border-radius: 8px;
-              padding: 10px;
+              padding: 8px 10px;
               background-color: #ececec;
             }
             h5 {
