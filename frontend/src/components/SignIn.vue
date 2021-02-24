@@ -20,6 +20,11 @@
           <p>Or with</p>
           <hr />
         </div>
+        <div class="alt-sign-in">
+          <div class="mock-log"></div>
+          <div class="mock-log"></div>
+          <div class="mock-log"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -48,7 +53,7 @@ export default {
 <style lang="scss" scoped>
 .sign-in {
   max-width: 1200px;
-  height: 600px;
+  height: 500px;
   margin: 150px auto;
   box-sizing: border-box;
   background-color: #fff;
@@ -103,16 +108,24 @@ export default {
       display: flex;
       hr {
         align-self: center;
-        border: 0;
-        height: 0;
-        border-top: 1px solid rgba(0, 0, 0, 0.1);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
         width: 170px;
         margin: 0;
       }
       p {
         color: #333;
         font-size: 0.8rem;
+      }
+    }
+    .alt-sign-in {
+      margin: 32px 0 0 0;
+      display: flex;
+      width: 300px;
+      justify-content: space-between;
+      .mock-log {
+        border-radius: 4px;
+        width: 80px;
+        height: 35px;
+        background-color: #333;
       }
     }
   }
