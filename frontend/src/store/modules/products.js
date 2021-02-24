@@ -6,9 +6,9 @@ export default {
     product: []
   },
   mutations: {
-    products(state, products) {
-      state.allProducts.push(products)
-      console.log(products);
+    products(state, product) {
+      product.forEach((r) => state.allProducts.push(r));
+      //console.log(JSON.parse(JSON.stringify(state.allProducts)));
     },
     getOneProduct(state, product) {
       state.product.push(product)
@@ -36,6 +36,11 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+    },
+  },
+  getters: {
+    products(state) {
+      return state.allProducts;
     },
   },
 };
