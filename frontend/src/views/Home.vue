@@ -1,8 +1,11 @@
 <template>
   <div class="container">
-    <Hero />
-    <Brands />
-    <Products />
+    <Navigation />
+    <main>
+      <Hero />
+      <Brands />
+      <Products />
+    </main>
   </div>
 </template>
 
@@ -10,11 +13,13 @@
 import Hero from "@/components/Hero";
 import Brands from "@/components/Brands";
 import Products from "@/components/Products";
+import Navigation from "../components/Navigation.vue";
 export default {
   components: {
     Hero,
     Brands,
     Products,
+    Navigation,
   },
   methods: {
     getProducts() {
@@ -29,11 +34,15 @@ export default {
 }
 .container {
   width: 100%;
-  .hero {
-    @extend .content-box;
-  }
-  .products {
-    @extend .content-box;
+  main {
+    max-width: 1440px;
+    margin: 0 auto;
+    .hero {
+      @extend .content-box;
+    }
+    .products {
+      @extend .content-box;
+    }
   }
 }
 </style>

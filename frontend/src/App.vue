@@ -14,7 +14,8 @@ body {
   h3,
   h4,
   h5,
-  h6 {
+  h6,
+  a {
     margin: 0;
     font-family: "Oswald", sans-serif;
   }
@@ -26,12 +27,10 @@ body {
     cursor: pointer;
   }
   #app {
-    max-width: 1440px;
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    margin: 0 auto;
   }
 
   #nav {
