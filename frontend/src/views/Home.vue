@@ -10,7 +10,9 @@
       />
       <button>Log in</button>
     </form>
-    <button @click="getUser">Get User</button>
+    <button @click="user">Get User</button>
+    <button @click="getProduct">Get Products</button>
+    <button @click="getOneProduct">One products</button>
   </div>
 </template>
 
@@ -31,12 +33,17 @@ export default {
         email: this.email,
         password: this.password,
       };
-      this.$store.dispatch("submitUser", payload);
-      // ...mapActions(["submitUser"], payload),
+      this.$store.dispatch("auth/submitUser", payload);
     },
-    getUser() {
-      this.$store.dispatch("getUser", this.getToken);
-      // console.log(this.getToken);
+
+    getProduct() {
+      this.$store.dispatch("products/getAllProducts");
+    },
+    user() {
+      this.$store.dispatch("user/userData");
+    },
+    getOneProduct() {
+      this.$store.dispatch("products/getOneProduct");
     },
   },
   computed: {
