@@ -1,5 +1,5 @@
 <template>
-  <section class="brands">
+  <section class="brands primary-section-style">
     <h1>BRANDS</h1>
     <div class="brands-logo">
       <div class="logo">
@@ -43,15 +43,6 @@ export default {};
 
 <style lang="scss" scoped>
 .brands {
-  max-width: 100%;
-  box-sizing: border-box;
-  padding: 30px 40px;
-  background-color: #fff;
-  border-radius: 20px;
-  text-align: left;
-  h1 {
-    letter-spacing: 0.09rem;
-  }
   .brands-logo {
     margin: 16px 0 0 0;
     display: grid;

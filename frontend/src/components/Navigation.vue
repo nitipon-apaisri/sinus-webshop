@@ -17,14 +17,16 @@
         </li>
       </ul>
       <Search />
+      <ShopServices />
     </div>
   </nav>
 </template>
 
 <script>
 import Search from "./Search.vue";
+import ShopServices from "./ShopServices.vue";
 export default {
-  components: { Search },
+  components: { Search, ShopServices },
 };
 </script>
 
@@ -40,9 +42,10 @@ nav {
     display: flex;
     max-width: 1440px;
     margin: 0 auto;
+    justify-content: space-between;
     ul {
       margin: 0;
-      width: 420px;
+      width: 400px;
       justify-content: space-between;
       display: flex;
       li {
@@ -57,6 +60,9 @@ nav {
       }
     }
     .search {
+      align-self: center;
+    }
+    .shop-services {
       align-self: center;
     }
   }

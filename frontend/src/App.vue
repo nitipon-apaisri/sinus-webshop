@@ -26,13 +26,23 @@ body {
   button {
     cursor: pointer;
   }
+  .primary-section-style {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 20px;
+    text-align: left;
+    h1 {
+      letter-spacing: 0.09rem;
+    }
+  }
   #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
   }
-
   #nav {
     padding: 30px;
 

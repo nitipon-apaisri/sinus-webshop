@@ -1,5 +1,5 @@
 <template>
-  <section class="products">
+  <section class="products primary-section-style">
     <h1>PRODUCTS</h1>
     <ul>
       <li v-for="product in products" :key="product.id">
@@ -44,15 +44,6 @@ export default {
 
 <style lang="scss" scoped>
 .products {
-  width: 100%;
-  box-sizing: border-box;
-  background-color: #fff;
-  padding: 30px 40px;
-  border-radius: 20px;
-  text-align: left;
-  h1 {
-    letter-spacing: 0.09rem;
-  }
   ul {
     padding: 0;
     display: grid;
