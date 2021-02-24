@@ -16,11 +16,8 @@ export default {
     Brands,
     Products,
   },
-  methods: {
-    getProducts() {
-      this.$store.dispatch("getProducts");
-    },
-  },
+  methods: {},
+  computed: {},
 };
 </script>
 <style lang="scss" scoped>
