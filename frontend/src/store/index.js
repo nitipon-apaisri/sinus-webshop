@@ -1,23 +1,19 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import auth from "./modules/auth";
+import products from "./modules/products";
+import user from "./modules/user";
 
-import postUser from "./modules/postUser";
-import getUser from "./modules/getUser";
-import getProducts from "./modules/getProducts";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-   state: {},
-   mutations: {},
-   actions: {},
+   state: {
+   },
+   mutations: {
+   },
    modules: {
-      postUser,
-      getUser,
-      getProducts,
+      auth, products, user,
    },
    getters: {
-      getToken() {
-         return postUser.state.token;
-      },
-   },
-});
+   }
+})

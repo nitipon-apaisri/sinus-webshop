@@ -2,7 +2,7 @@
   <section class="products">
     <h1>PRODUCTS</h1>
     <ul>
-      <li v-for="product in Products" :key="product.id">
+      <li v-for="product in products" :key="product.id">
         <div class="the-product">
           <div class="product">
             <div class="product-img">
@@ -34,10 +34,10 @@
 import { mapGetters } from "vuex";
 export default {
   computed: {
-    ...mapGetters(["Products"]),
+    ...mapGetters("products", ["products"]),
   },
   beforeMount() {
-    this.$store.dispatch("getProducts");
+    this.$store.dispatch("products/getAllProducts");
   },
 };
 </script>

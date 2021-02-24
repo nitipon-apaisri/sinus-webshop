@@ -21,11 +21,8 @@ export default {
     Products,
     Navigation,
   },
-  methods: {
-    getProducts() {
-      this.$store.dispatch("getProducts");
-    },
-  },
+  methods: {},
+  computed: {},
 };
 </script>
 <style lang="scss" scoped>
