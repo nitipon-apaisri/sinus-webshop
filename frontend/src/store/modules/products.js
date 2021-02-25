@@ -7,7 +7,9 @@ export default {
    },
    mutations: {
       products(state, product) {
-         product.forEach((r) => state.allProducts.push(r));
+         if (state.allProducts.length <= 0) {
+            product.forEach((r) => state.allProducts.push(r));
+         }
          console.log(JSON.parse(JSON.stringify(state.allProducts)));
       },
       getOneProduct(state, product) {
