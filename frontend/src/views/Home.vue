@@ -1,8 +1,15 @@
 <template>
   <div class="container">
-    <Hero />
-    <Brands />
-    <Products />
+    <Navigation />
+    <main>
+      <Hero />
+      <Brands />
+      <Products />
+      <div class="shop-extra-info">
+        <About />
+        <Guide />
+      </div>
+    </main>
   </div>
 </template>
 
@@ -10,11 +17,17 @@
 import Hero from "@/components/Hero";
 import Brands from "@/components/Brands";
 import Products from "@/components/Products";
+import Navigation from "@/components/Navigation.vue";
+import About from "@/components/About";
+import Guide from "../components/Guide.vue";
 export default {
   components: {
     Hero,
     Brands,
     Products,
+    Navigation,
+    About,
+    Guide,
   },
   methods: {},
   computed: {},
@@ -26,11 +39,27 @@ export default {
 }
 .container {
   width: 100%;
-  .hero {
-    @extend .content-box;
-  }
-  .products {
-    @extend .content-box;
+  main {
+    max-width: 1440px;
+    margin: 0 auto;
+    .hero {
+      @extend .content-box;
+    }
+    .products {
+      @extend .content-box;
+    }
+    .shop-extra-info {
+      display: grid;
+      grid-auto-flow: row;
+      grid-gap: 24px;
+      grid-template-columns: repeat(12, 1fr);
+      .about {
+        grid-column: span 5;
+      }
+      .guide {
+        grid-column: span 7;
+      }
+    }
   }
 }
 </style>
