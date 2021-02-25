@@ -2,34 +2,38 @@ import axios from "axios";
 export default {
    namespaced: true,
    state: {
+      loading: undefined,
       allProducts: [],
-      product: [],
+      oneProduct: [],
    },
    mutations: {
       products(state, product) {
-         if (state.allProducts.length <= 0) {
-            product.forEach((r) => state.allProducts.push(r));
-         }
+         product.forEach((r) => state.allProducts.push(r));
          console.log(JSON.parse(JSON.stringify(state.allProducts)));
       },
       getOneProduct(state, product) {
-         state.product.push(product);
+         state.oneProduct = product;
          console.log(product);
+      },
+      setLoader(state, value) {
+         state.loading = value;
       },
    },
    actions: {
       async getAllProducts({ commit }) {
+         commit("setLoader", true);
          axios
             .get("http://localhost:5000/api/products")
             .then((res) => {
                commit("products", res.data);
+               commit("setLoader", false);
             })
             .catch((err) => {
                console.log(err);
             });
       },
       async getOneProduct({ commit }) {
-         const payload = "KqhH2cqSLNW3Ae0Z";
+         const payload = "FwCV5mTzyzSRKG3n";
          axios
             .get("http://localhost:5000/api/products/" + payload)
             .then((res) => {
@@ -43,6 +47,9 @@ export default {
    getters: {
       products(state) {
          return state.allProducts;
+      },
+      product(state) {
+         return state.oneProduct;
       },
    },
 };
