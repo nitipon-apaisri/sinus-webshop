@@ -45,6 +45,9 @@ export default {
         password: this.password,
       };
       this.$store.dispatch("auth/submitUser", payload);
+      setTimeout(() => {
+        this.$router.push("/");
+      }, 300);
     },
   },
 };
