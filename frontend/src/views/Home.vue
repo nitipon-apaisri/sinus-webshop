@@ -1,18 +1,39 @@
 <template>
-  <div class="home">
-    
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container">
+    <Hero />
+    <Brands />
+    <Products />
+    <Footer />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import Hero from "@/components/Hero";
+import Brands from "@/components/Brands";
+import Products from "@/components/Products";
+import Footer from "@/components/Footer";
 export default {
-  name: 'Home',
   components: {
-    HelloWorld
+    Hero,
+    Brands,
+    Products,
+    Footer,
+  },
+  methods: {},
+  computed: {},
+};
+</script>
+<style lang="scss" scoped>
+.content-box {
+  margin: 24px 0;
+}
+.container {
+  width: 100%;
+  .hero {
+    @extend .content-box;
+  }
+  .products {
+    @extend .content-box;
   }
 }
-</script>
+</style>
