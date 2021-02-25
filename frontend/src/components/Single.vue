@@ -117,6 +117,7 @@ export default {
   display: flex;
 }
 .product-wrapper {
+  box-sizing: border-box;
   max-width: 1440px;
   margin: 100px auto;
   background-color: #fff;
