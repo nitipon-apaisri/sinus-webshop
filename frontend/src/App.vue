@@ -14,7 +14,8 @@ body {
   h3,
   h4,
   h5,
-  h6 {
+  h6,
+  a {
     margin: 0;
     font-family: "Oswald", sans-serif;
   }
@@ -25,15 +26,29 @@ body {
   button {
     cursor: pointer;
   }
+  .primary-section-style {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 20px;
+    text-align: left;
+    h1 {
+      letter-spacing: 0.09rem;
+    }
+  }
+  hr {
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  }
   #app {
-    max-width: 1440px;
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    margin: 0 auto;
   }
-
   #nav {
     padding: 30px;
 

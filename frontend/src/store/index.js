@@ -7,13 +7,13 @@ import user from "./modules/user";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-   state: {
-   },
-   mutations: {
-   },
+   state: {},
+   mutations: {},
+   actions: {},
    modules: {
-      auth, products, user,
+      auth,
+      products,
+      user,
    },
-   getters: {
-   }
-})
+   getters: {},
+});

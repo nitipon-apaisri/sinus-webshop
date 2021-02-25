@@ -1,11 +1,10 @@
 import axios from "axios";
 export default {
    namespaced: true,
-   state: {
-   },
+   state: {},
    mutations: {
       submitUser(state, tokenValue) {
-         sessionStorage.setItem("user", tokenValue)
+         sessionStorage.setItem("user", tokenValue);
       },
    },
    actions: {
