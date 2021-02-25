@@ -10,6 +10,7 @@
         <Guide />
       </div>
     </main>
+    <Footer />
   </div>
 </template>
 
@@ -20,6 +21,7 @@ import Products from "@/components/Products";
 import Navigation from "@/components/Navigation.vue";
 import About from "@/components/About";
 import Guide from "../components/Guide.vue";
+import Footer from "../components/Footer.vue";
 export default {
   components: {
     Hero,
@@ -28,8 +30,10 @@ export default {
     Navigation,
     About,
     Guide,
+    Footer,
   },
-  methods: {},
+
+  Footermethods: {},
   computed: {},
 };
 </script>
