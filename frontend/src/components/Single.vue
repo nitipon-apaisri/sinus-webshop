@@ -1,25 +1,71 @@
   <template>
-  <div class="wrapper">
+  <div class="product-wrapper">
     <div v-if="loading" class="loader">Content is loading</div>
     <div v-else class="product">
-      <div class="header"><button class="price">BACK</button></div>
-      <div class="img-wrapper">
-        <img :src="require(`../assets/${products[6].imgFile}`)" alt="text" />
+      <div class="product-header">
+        <button class="price" @click="backToHome">
+          <font-awesome-icon :icon="['fas', 'angle-left']" size="2x" />
+          <p>BACK</p>
+        </button>
+        <p>Home / {{ product.title }}</p>
       </div>
-      <div class="details-wrapper">
-        <h1>{{ products[6].title }}</h1>
-        <p>{{ products[6].longDesc }}</p>
-        <h3>Size</h3>
-        <ul v-if="products[6].category == 'clothes'">
-          <li v-for="(size, index) in clothesSize" :key="index">
-            <div class="sizebtn">{{ size }}</div>
-          </li>
-        </ul>
+      <div class="product-info">
+        <div class="product-img" v-if="product.category == 'board'">
+          <img
+            :src="require(`../assets/${product.imgFile}`)"
+            alt="text"
+            class="board"
+          />
+        </div>
+        <div
+          class="product-img"
+          v-if="product.category == 'clothes' || product.category == 'wheels'"
+        >
+          <img
+            :src="require(`../assets/${product.imgFile}`)"
+            alt="text"
+            class="wheels"
+          />
+        </div>
+        <div class="product-details">
+          <div class="details-header">
+            <h1>{{ product.title }}</h1>
+            <p>Product id: {{ product._id }}</p>
+          </div>
+          <div class="rate">
+            <font-awesome-icon
+              :icon="['fas', 'star']"
+              v-for="star in 5"
+              :key="star.id"
+            />
+          </div>
+          <div class="details-desc">
+            <p>{{ product.longDesc }}</p>
+            <div class="size">
+              <h3>Size</h3>
+              <ul v-if="product.category == 'clothes'">
+                <li v-for="(size, index) in clothesSize" :key="index">
+                  <h5>{{ size }}</h5>
+                </li>
+              </ul>
+              <ul v-if="product.category == 'board'">
+                <li v-for="(size, index) in boardsSize" :key="index">
+                  <h5>{{ size }}</h5>
+                </li>
+              </ul>
+              <ul v-if="product.category == 'wheels'">
+                <li v-for="(size, index) in wheelsSize" :key="index">
+                  <h5>{{ size }}</h5>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="footer">
+      <div class="product-footer">
         <button class="price">
           <font-awesome-icon :icon="['fas', 'shopping-bag']" />
-          {{ products[6].price }} SEK
+          <h4>{{ product.price }} SEK</h4>
         </button>
       </div>
     </div>
@@ -30,162 +76,164 @@
 import { mapGetters } from "vuex";
 import { mapState } from "vuex";
 export default {
-  props: {
-    product: Object,
-  },
   data() {
     return {
-      clothesSize: ["XS", "S", "M", "L", "XL"],
+      clothesSize: ["XS", "S", "M", "L", "XL", "XXL"],
+      boardsSize: ["8.0", "8.125", "8.25", "8.375", "8.5", "8.9"],
+      wheelsSize: ["50", "51", "52", "53", "54", "55"],
     };
   },
   beforeMount() {
-    this.$store.dispatch("products/getAllProducts");
+    if (this.products.length === 0) {
+      this.$router.push("/");
+    }
+  },
+  methods: {
+    backToHome() {
+      this.$router.push("/");
+    },
   },
   computed: {
-    ...mapGetters("products", ["products"]),
+    ...mapGetters("products", ["product", "products"]),
     ...mapState("products", ["loading"]),
   },
 };
 </script>
   
-  <style scoped>
+  <style lang="scss" scoped>
 * {
   padding: 0;
   margin: 0;
 }
 
-h1 {
-  font-family: Oswald;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 36px;
-  line-height: 53px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-h3 {
-  margin: 20px 0;
-}
-
-p {
-  font-family: Noto Sans;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 16px;
-  align-items: center;
-  letter-spacing: 0.02em;
-  color: #bdbdbd;
-}
-
-ul {
-  list-style: none;
-}
-
-.wrapper {
-  width: 1340px;
-  height: 672px;
-  background: #fff;
-  border-radius: 20px;
-  padding: 20px 50px;
-}
-
-.product {
-  display: grid;
-  width: 100%;
-  height: 100%;
-  grid-template-areas:
-    "header . ."
-    "img . info"
-    ". . footer";
-}
-
-.header {
-  grid-area: header;
-  display: flex;
-  align-items: center;
-}
-
-.img-wrapper {
-  grid-area: img;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 400px;
-  height: 400px;
-  background: #f5f5f5;
-  border-radius: 20px;
-}
-
-.product-img {
-  max-width: 250px;
-  max-height: 250px;
-}
-
-img {
-  max-width: 80%;
-  max-height: 80%;
-}
-
-.details-wrapper {
-  grid-area: info;
-  text-align: left;
-  padding: 0 15%;
-}
-
-ul {
-  display: flex;
-}
-
-.sizebtn {
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.sizebtn:hover {
-  cursor: pointer;
-  border: 1px solid #000;
-}
-
-ul li {
-  margin-left: 20px;
-}
-
-ul li:first-child {
-  margin-left: 0px;
-}
-
-.sizebtn {
-  width: 85.27px;
-  height: 85px;
-  background: #f5f5f5;
-  border-radius: 10px;
-}
-
-.footer {
-  grid-area: footer;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.price {
-  font-family: Oswald;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 16px;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  width: 130.42px;
-  height: 36px;
-  background: #000000;
-  color: #fff;
+.default-button {
+  padding: 6px 18px;
+  background-color: #000;
+  border: 1px solid transparent;
   border-radius: 4px;
-  border-style: none;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1rem;
+  display: flex;
+}
+.product-wrapper {
+  max-width: 1440px;
+  margin: 100px auto;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 50px;
+  .product {
+    .product-header {
+      display: flex;
+      button {
+        @extend .default-button;
+        p {
+          margin-left: 12px;
+          align-self: center;
+        }
+      }
+      p {
+        margin-left: 32px;
+        align-self: center;
+        color: #ddd;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+      }
+    }
+    .product-info {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-gap: 32px;
+      margin: 50px 0;
+      .product-img {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 60px;
+        grid-column: span 5;
+        background-color: #f5f5f5;
+        border-radius: 20px;
+        .wheels {
+          width: 250px;
+          height: 250px;
+        }
+        .board {
+          width: 83px;
+          height: 250px;
+        }
+      }
+      .product-details {
+        padding: 0 124px;
+        text-align: left;
+        grid-column: span 7;
+        .details-header {
+          h1 {
+            line-height: 2.4rem;
+            text-transform: uppercase;
+          }
+          p {
+            color: #ddd;
+            font-size: 0.8rem;
+          }
+        }
+        .rate {
+          margin: 8px 0;
+          svg {
+            margin: 0 2px 0 0;
+            color: #eb5757;
+          }
+        }
+        .details-desc {
+          margin: 16px 0;
+          p {
+            color: #bdbdbd;
+            letter-spacing: 0.025rem;
+            font-size: 0.85rem;
+          }
+          .size {
+            text-transform: uppercase;
+            margin: 16px 0;
+            ul {
+              display: grid;
+              grid-template-columns: repeat(12, 1fr);
+              grid-gap: 20px;
+              margin: 16px 0;
+              li {
+                background-color: #f5f5f5;
+                box-sizing: border-box;
+                list-style: none;
+                grid-column: span 2;
+                border-radius: 10px;
+                padding: 25.5px 16px;
+                h5 {
+                  text-align: center;
+                  color: #333;
+                  font-weight: bold;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .product-footer {
+      display: flex;
+      justify-content: flex-end;
+      button {
+        padding: 16px 20px;
+        border: 1px solid transparent;
+        background-color: #000;
+        color: #fff;
+        border-radius: 8px;
+        display: flex;
+        svg {
+          font-size: 1.5rem;
+        }
+        h4 {
+          margin: 0 0 0 20px;
+          align-self: center;
+        }
+      }
+    }
+  }
 }
 </style>

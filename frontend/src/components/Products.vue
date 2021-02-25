@@ -2,9 +2,9 @@
   <section class="products primary-section-style">
     <h1>PRODUCTS</h1>
     <ul>
-      <li v-for="product in products" :key="product.id">
+      <li v-for="(product, index) in products" :key="index">
         <div class="the-product">
-          <div class="product">
+          <div class="product" @click="viewInfo(index)">
             <div class="product-img">
               <img
                 :src="require(`../assets/${product.imgFile}`)"
@@ -33,6 +33,14 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
+  methods: {
+    viewInfo(index) {
+      this.$store.dispatch("products/getOneProduct", this.products[index]._id);
+      setTimeout(() => {
+        this.$router.push("info/" + this.products[index]._id);
+      }, 300);
+    },
+  },
   computed: {
     ...mapGetters("products", ["products"]),
   },
@@ -54,6 +62,7 @@ export default {
       list-style: none;
       .the-product {
         .product {
+          cursor: pointer;
           box-sizing: border-box;
           width: 200px;
           height: 200px;
