@@ -73,6 +73,7 @@ export default {
           justify-content: center;
           .product-img {
             align-self: center;
+
             img {
               max-width: 230px;
               max-height: 115px;
