@@ -1,13 +1,9 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-<<<<<<< HEAD
-import SignInUp from "../views/SignInUp.vue";
-import Info from "../views/Info.vue";
-=======
 import Auth from "../views/Auth.vue";
 import Register from "../views/Register.vue";
->>>>>>> main
+import Info from "../views/Info.vue";
 
 Vue.use(VueRouter);
 

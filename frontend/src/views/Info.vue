@@ -12,4 +12,8 @@ export default {
 </script>
 
 <style>
+.content {
+  max-width: 1440px;
+  margin: 100px auto;
+}
 </style>

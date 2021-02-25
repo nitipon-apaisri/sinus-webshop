@@ -4,13 +4,13 @@
     <div v-else class="product">
       <div class="header"><button class="price">BACK</button></div>
       <div class="img-wrapper">
-        <img src="" alt="product picture" />
+        <img :src="require(`../assets/${products[6].imgFile}`)" alt="text" />
       </div>
       <div class="details-wrapper">
-        <h1>{{ products[0].title }}</h1>
-        <p>{{ products[0].longDesc }}</p>
+        <h1>{{ products[6].title }}</h1>
+        <p>{{ products[6].longDesc }}</p>
         <h3>Size</h3>
-        <ul>
+        <ul v-if="products[6].category == 'clothes'">
           <li v-for="(size, index) in clothesSize" :key="index">
             <div class="sizebtn">{{ size }}</div>
           </li>
@@ -19,7 +19,7 @@
       <div class="footer">
         <button class="price">
           <font-awesome-icon :icon="['fas', 'shopping-bag']" />
-          {{ products[0].price }} SEK
+          {{ products[6].price }} SEK
         </button>
       </div>
     </div>
@@ -30,6 +30,9 @@
 import { mapGetters } from "vuex";
 import { mapState } from "vuex";
 export default {
+  props: {
+    product: Object,
+  },
   data() {
     return {
       clothesSize: ["XS", "S", "M", "L", "XL"],
@@ -81,20 +84,17 @@ ul {
 }
 
 .wrapper {
-  margin-top: 90px;
-  width: 100%;
+  width: 1340px;
   height: 672px;
   background: #fff;
-  display: flex;
-  align-items: center;
   border-radius: 20px;
+  padding: 20px 50px;
 }
 
 .product {
   display: grid;
   width: 100%;
   height: 100%;
-  margin: 50px;
   grid-template-areas:
     "header . ."
     "img . info"
@@ -121,6 +121,11 @@ ul {
 .product-img {
   max-width: 250px;
   max-height: 250px;
+}
+
+img {
+  max-width: 80%;
+  max-height: 80%;
 }
 
 .details-wrapper {
