@@ -3,6 +3,7 @@
     <Hero />
     <Brands />
     <Products />
+    <Footer/>
   </div>
 </template>
 
@@ -10,11 +11,13 @@
 import Hero from "@/components/Hero";
 import Brands from "@/components/Brands";
 import Products from "@/components/Products";
+import Footer from "@/components/Footer";
 export default {
   components: {
     Hero,
     Brands,
     Products,
+    Footer,
   },
   methods: {},
   computed: {},
