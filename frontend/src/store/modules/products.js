@@ -4,16 +4,16 @@ export default {
    state: {
       loading: undefined,
       allProducts: [],
-      oneProduct: [],
+      oneProduct: {},
    },
    mutations: {
       products(state, product) {
-         product.forEach((r) => state.allProducts.push(r));
-         console.log(JSON.parse(JSON.stringify(state.allProducts)));
+         if (state.allProducts.length <= 0) {
+            product.forEach((r) => state.allProducts.push(r));
+         }
       },
       getOneProduct(state, product) {
          state.oneProduct = product;
-         console.log(product);
       },
       setLoader(state, value) {
          state.loading = value;
@@ -32,8 +32,7 @@ export default {
                console.log(err);
             });
       },
-      async getOneProduct({ commit }) {
-         const payload = "FwCV5mTzyzSRKG3n";
+      async getOneProduct({ commit }, payload) {
          axios
             .get("http://localhost:5000/api/products/" + payload)
             .then((res) => {

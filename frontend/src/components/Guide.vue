@@ -2,15 +2,15 @@
   <section class="guide primary-section-style">
     <h1>GUIDES</h1>
     <div class="contents">
-      <div class="content">
+      <div class="guide-content">
         <div class="mock-img"></div>
         <h4>BUY A SKATE</h4>
       </div>
-      <div class="content">
+      <div class="guide-content">
         <div class="mock-img"></div>
         <h4>SETUP</h4>
       </div>
-      <div class="content">
+      <div class="guide-content">
         <div class="mock-img"></div>
         <h4>TRICKS</h4>
       </div>
@@ -30,7 +30,7 @@ export default {};
     grid-template-columns: repeat(12, 1fr);
     grid-auto-flow: row;
     grid-gap: 20px;
-    .content {
+    .guide-content {
       grid-column: span 4;
       .mock-img {
         background-color: #f2f2f2;
