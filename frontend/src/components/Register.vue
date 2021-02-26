@@ -70,9 +70,7 @@ export default {
     };
   },
   methods: {
-    register() {
-      console.log(this.name);
-    },
+    register() {},
   },
 };
 </script>

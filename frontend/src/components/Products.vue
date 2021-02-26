@@ -18,7 +18,7 @@
               <p>{{ product.category }}</p>
             </div>
             <div class="product-footer">
-              <button>
+              <button @click="viewInfo(index)">
                 <font-awesome-icon :icon="['fas', 'shopping-bag']" />
               </button>
               <h5>{{ product.price }} SEK</h5>

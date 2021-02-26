@@ -44,17 +44,29 @@
             <div class="size">
               <h3>Size</h3>
               <ul v-if="product.category == 'clothes'">
-                <li v-for="(size, index) in clothesSize" :key="index">
+                <li
+                  v-for="(size, index) in clothesSize"
+                  :key="index"
+                  @click="addSize(size)"
+                >
                   <h5>{{ size }}</h5>
                 </li>
               </ul>
               <ul v-if="product.category == 'board'">
-                <li v-for="(size, index) in boardsSize" :key="index">
+                <li
+                  v-for="(size, index) in boardsSize"
+                  :key="index"
+                  @click="addSize(size)"
+                >
                   <h5>{{ size }}</h5>
                 </li>
               </ul>
               <ul v-if="product.category == 'wheels'">
-                <li v-for="(size, index) in wheelsSize" :key="index">
+                <li
+                  v-for="(size, index) in wheelsSize"
+                  :key="index"
+                  @click="addSize(size)"
+                >
                   <h5>{{ size }}</h5>
                 </li>
               </ul>
@@ -63,7 +75,7 @@
         </div>
       </div>
       <div class="product-footer">
-        <button class="price">
+        <button class="price" @click="addToCart">
           <font-awesome-icon :icon="['fas', 'shopping-bag']" />
           <h4>{{ product.price }} SEK</h4>
         </button>
@@ -81,6 +93,7 @@ export default {
       clothesSize: ["XS", "S", "M", "L", "XL", "XXL"],
       boardsSize: ["8.0", "8.125", "8.25", "8.375", "8.5", "8.9"],
       wheelsSize: ["50", "51", "52", "53", "54", "55"],
+      size: "",
     };
   },
   beforeMount() {
@@ -91,6 +104,12 @@ export default {
   methods: {
     backToHome() {
       this.$router.push("/");
+    },
+    addToCart() {
+      this.$store.dispatch("order/addToCart", [this.product, this.size]);
+    },
+    addSize(size) {
+      this.size = size;
     },
   },
   computed: {
@@ -199,12 +218,16 @@ export default {
               grid-gap: 20px;
               margin: 16px 0;
               li {
+                cursor: pointer;
                 background-color: #f5f5f5;
                 box-sizing: border-box;
                 list-style: none;
                 grid-column: span 2;
                 border-radius: 10px;
                 padding: 25.5px 16px;
+                .sizeActive {
+                  background-color: #a5a5a5;
+                }
                 h5 {
                   text-align: center;
                   color: #333;

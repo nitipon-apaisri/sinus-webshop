@@ -5,6 +5,7 @@ import Auth from "../views/Auth.vue";
 import Register from "../views/Register.vue";
 import User from "../views/User.vue";
 import Info from "../views/Info.vue";
+import Checkout from "../views/Checkout.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -36,6 +37,11 @@ const routes = [
       path: "/info/:id",
       name: "Info",
       component: Info,
+   },
+   {
+      path: "/checkout",
+      name: "Checkout",
+      component: Checkout,
    },
 ];
 

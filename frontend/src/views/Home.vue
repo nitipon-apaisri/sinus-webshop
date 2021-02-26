@@ -43,6 +43,7 @@ export default {
 }
 .container {
   width: 100%;
+
   main {
     max-width: 1440px;
     margin: 0 auto;

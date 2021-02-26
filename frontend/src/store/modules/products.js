@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../../api/api";
 export default {
    namespaced: true,
    state: {
@@ -22,8 +22,7 @@ export default {
    actions: {
       async getAllProducts({ commit }) {
          commit("setLoader", true);
-         axios
-            .get("http://localhost:5000/api/products")
+         api.get("http://localhost:5000/api/products")
             .then((res) => {
                commit("products", res.data);
                commit("setLoader", false);
@@ -33,8 +32,7 @@ export default {
             });
       },
       async getOneProduct({ commit }, payload) {
-         axios
-            .get("http://localhost:5000/api/products/" + payload)
+         api.get("http://localhost:5000/api/products/" + payload)
             .then((res) => {
                commit("getOneProduct", res.data);
             })
