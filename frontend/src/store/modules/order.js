@@ -4,11 +4,13 @@ export default {
       preOrder: [],
       makeOrder: [],
       cartStatus: true,
+      bagStatus: false,
    },
    mutations: {
       toCart(state, productIndex) {
          state.cartStatus = false;
-         const productId = state.preOrder.find((e) => e._id == productIndex._id);
+         state.bagStatus = true;
+         const productId = state.preOrder.find((e) => e._id == productIndex._id && e.size == productIndex.size);
          if (productId != undefined) {
             const productIndex = state.preOrder.indexOf(productId);
             state.preOrder[productIndex].amount++;
@@ -18,13 +20,13 @@ export default {
       },
       increaseAmount(state, index) {
          state.preOrder[index].amount++;
-         console.log(state.preOrder[index].amount);
+         console.log(state.preOrder[index]);
       },
       decreaseAmount(state, index) {
          if (state.preOrder[index].amount !== 1) {
             state.preOrder[index].amount--;
          }
-         console.log(state.preOrder[index].amount);
+         console.log(state.preOrder[index]);
       },
    },
    actions: {

@@ -87,7 +87,7 @@
                 </li>
               </ul>
               <div class="checkout-cost">
-                <h3>Total: {{ totalCost }}SEK</h3>
+                <h3>Total: {{ totalCost }} SEK</h3>
               </div>
             </div>
           </div>

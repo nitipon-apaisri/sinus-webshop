@@ -106,7 +106,11 @@ export default {
       this.$router.push("/");
     },
     addToCart() {
-      this.$store.dispatch("order/addToCart", [this.product, this.size]);
+      if (this.size === "") {
+        alert("Please select size for the product3");
+      } else {
+        this.$store.dispatch("order/addToCart", [this.product, this.size]);
+      }
     },
     addSize(size) {
       this.size = size;
@@ -225,13 +229,22 @@ export default {
                 grid-column: span 2;
                 border-radius: 10px;
                 padding: 25.5px 16px;
-                .sizeActive {
-                  background-color: #a5a5a5;
-                }
                 h5 {
                   text-align: center;
                   color: #333;
                   font-weight: bold;
+                }
+              }
+              li:hover {
+                background-color: #333;
+                h5 {
+                  color: #fff;
+                }
+              }
+              li:active {
+                background-color: #fff;
+                h5 {
+                  color: #000;
                 }
               }
             }
