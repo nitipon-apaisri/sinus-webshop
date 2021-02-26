@@ -18,7 +18,7 @@
               <p>{{ product.category }}</p>
             </div>
             <div class="product-footer">
-              <button>
+              <button @click="addToCart(index)">
                 <font-awesome-icon :icon="['fas', 'shopping-bag']" />
               </button>
               <h5>{{ product.price }} SEK</h5>
@@ -39,6 +39,9 @@ export default {
       setTimeout(() => {
         this.$router.push("info/" + this.products[index]._id);
       }, 300);
+    },
+    addToCart(index) {
+      this.$store.dispatch("order/addToCart", this.products[index]);
     },
   },
   computed: {

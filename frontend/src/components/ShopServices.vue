@@ -1,6 +1,10 @@
 <template>
   <div class="shop-services">
-    <font-awesome-icon :icon="['fas', 'shopping-bag']" size="2x" />
+    <font-awesome-icon
+      :icon="['fas', 'shopping-bag']"
+      size="2x"
+      @click="toCheckout"
+    />
     <font-awesome-icon :icon="['fas', 'user']" size="2x" @click="toProfile" />
   </div>
 </template>
@@ -18,11 +22,13 @@ export default {
   methods: {
     toProfile() {
       if (this.token !== null) {
-        console.log(this.token);
         this.$router.push("/account").catch((err) => err);
       } else {
         this.$router.push("/auth");
       }
+    },
+    toCheckout() {
+      this.$router.push("/checkout").catch((err) => err);
     },
   },
 };

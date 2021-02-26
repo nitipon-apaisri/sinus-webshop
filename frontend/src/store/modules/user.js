@@ -1,5 +1,6 @@
-import axios from "axios";
-const api = axios.create({ baseURL: "http://localhost:5000/api" });
+import api from "../../api/api";
+const userToken = sessionStorage.getItem("user");
+api.defaults.headers.common["Authorization"] = `Bearer ${userToken}`;
 export default {
    namespaced: true,
    state: {
@@ -17,12 +18,8 @@ export default {
    actions: {
       async userData({ commit }) {
          commit("setLoader", true);
-         const userToken = sessionStorage.getItem("user");
-         api.get("/me", {
-            headers: {
-               Authorization: `Bearer ${userToken}`,
-            },
-         })
+
+         api.get("/me")
             .then((response) => {
                commit("checkUser", response.data);
                commit("setLoader", false);
