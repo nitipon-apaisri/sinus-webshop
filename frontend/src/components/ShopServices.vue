@@ -1,15 +1,21 @@
 <template>
   <div class="shop-services">
-    <font-awesome-icon
-      :icon="['fas', 'shopping-bag']"
-      size="2x"
-      @click="toCheckout"
-    />
-    <font-awesome-icon :icon="['fas', 'user']" size="2x" @click="toProfile" />
+    <div class="bag">
+      <font-awesome-icon
+        :icon="['fas', 'shopping-bag']"
+        size="2x"
+        @click="toCheckout"
+      />
+      <div class="bag-status" v-if="bagStatus"></div>
+    </div>
+    <div class="profile">
+      <font-awesome-icon :icon="['fas', 'user']" size="2x" @click="toProfile" />
+    </div>
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   data() {
     return {
@@ -31,6 +37,9 @@ export default {
       this.$router.push("/checkout").catch((err) => err);
     },
   },
+  computed: {
+    ...mapState("order", ["bagStatus"]),
+  },
 };
 </script>
 
@@ -44,6 +53,18 @@ export default {
   }
   svg {
     cursor: pointer;
+  }
+  .bag {
+    position: relative;
+    .bag-status {
+      top: 0px;
+      right: -8px;
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-radius: 100%;
+      background-color: red;
+    }
   }
 }
 </style>
