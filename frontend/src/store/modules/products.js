@@ -14,7 +14,6 @@ export default {
       },
       getOneProduct(state, product) {
          state.oneProduct = product;
-         console.log(state.oneProduct);
       },
       setLoader(state, value) {
          state.loading = value;

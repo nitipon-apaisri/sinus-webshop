@@ -35,7 +35,6 @@ export default {
     },
     getUser() {
       this.$store.dispatch("getUser", this.getToken);
-      // console.log(this.getToken);
     },
   },
   /*

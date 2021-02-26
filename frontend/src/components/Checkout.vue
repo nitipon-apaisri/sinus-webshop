@@ -52,9 +52,23 @@
                       <h2>{{ item.title }}</h2>
                       <div class="item-sub-desc">
                         <p>Product id: {{ item._id }}</p>
+                        <p>Size: {{ item.size }}</p>
                         <p>Price: {{ item.price }} SEK</p>
                         <p>Category: {{ item.category }}</p>
                       </div>
+                    </div>
+                    <div class="actions">
+                      <font-awesome-icon
+                        :icon="['fas', 'minus-square']"
+                        size="2x"
+                        @click="decreaseAmount(index)"
+                      />
+                      <h3>{{ item.amount }}X</h3>
+                      <font-awesome-icon
+                        :icon="['fas', 'plus-square']"
+                        size="2x"
+                        @click="increaseAmount(index)"
+                      />
                     </div>
                   </div>
                 </div>
@@ -63,7 +77,18 @@
           </div>
           <div class="checkout-list">
             <div class="checkout-list-header">
-              <h2>checkout list</h2>
+              <h3>checkout list</h3>
+            </div>
+            <div class="checkout-list-content">
+              <ul>
+                <li v-for="item in order" :key="item.id">
+                  <h4>{{ item.title }}</h4>
+                  <h4>{{ item.amount }}X</h4>
+                </li>
+              </ul>
+              <div class="checkout-cost">
+                <h3>Total: {{ totalCost }}SEK</h3>
+              </div>
             </div>
           </div>
         </div>
@@ -73,11 +98,18 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from "vuex";
+import { mapGetters } from "vuex";
 export default {
   computed: {
-    ...mapGetters("order", ["order"]),
-    ...mapState("order", ["cartStatus"]),
+    ...mapGetters("order", ["order", "totalCost", "cartStatus"]),
+  },
+  methods: {
+    increaseAmount(index) {
+      this.$store.dispatch("order/increaseAmount", index);
+    },
+    decreaseAmount(index) {
+      this.$store.dispatch("order/decreaseAmount", index);
+    },
   },
 };
 </script>
@@ -104,15 +136,17 @@ export default {
     .cart-contents {
       margin: 50px 0 0 0;
       .cart-content {
+        padding: 8px 0;
         display: grid;
         grid-template-columns: repeat(12, 1fr);
         .item-content {
           grid-column: span 8;
           ul {
+            margin: 0;
             padding: 0;
             li {
               list-style: none;
-              margin: 24px 0 0 0;
+              margin: 0 0 16px 0;
               .item {
                 .item-info {
                   display: flex;
@@ -135,6 +169,27 @@ export default {
                       height: 100%;
                     }
                   }
+                  .item-desc {
+                    width: 400px;
+                    h2 {
+                      text-transform: uppercase;
+                      letter-spacing: 0.075rem;
+                    }
+                    p {
+                      font-size: 0.85rem;
+                      letter-spacing: 0.025rem;
+                      margin: 4px 0;
+                      color: #bdbdbd;
+                    }
+                  }
+                  .actions {
+                    display: flex;
+                    height: fit-content;
+                    h3 {
+                      margin: 0 32px;
+                      align-self: center;
+                    }
+                  }
                 }
               }
             }
@@ -142,9 +197,37 @@ export default {
         }
         .checkout-list {
           grid-column: span 4;
-          display: flex;
-          justify-content: flex-end;
+          width: 100%;
           box-sizing: border-box;
+          padding: 0 0 0 168px;
+          .checkout-list-header {
+            width: 100%;
+            box-sizing: border-box;
+            text-transform: uppercase;
+            padding: 8px 16px;
+            height: fit-content;
+            background-color: #000;
+            color: #fff;
+            border-radius: 8px;
+          }
+          .checkout-list-content {
+            ul {
+              padding: 0 16px;
+              li {
+                display: flex;
+                justify-content: space-between;
+                text-transform: uppercase;
+                h4 {
+                  color: #bdbdbd;
+                  letter-spacing: 0.05rem;
+                }
+              }
+            }
+            .checkout-cost {
+              letter-spacing: 0.05rem;
+              text-transform: uppercase;
+            }
+          }
         }
       }
     }
