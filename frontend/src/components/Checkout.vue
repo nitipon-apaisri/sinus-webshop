@@ -89,6 +89,7 @@
               <div class="checkout-cost">
                 <h3>Total: {{ totalCost }} SEK</h3>
               </div>
+              <button @click="toSum">To sum</button>
             </div>
           </div>
         </div>
@@ -110,6 +111,9 @@ export default {
     decreaseAmount(index) {
       this.$store.dispatch("order/decreaseAmount", index);
     },
+    toSum() {
+      this.$router.push("/summarize");
+    },
   },
 };
 </script>
@@ -122,12 +126,12 @@ export default {
       text-transform: uppercase;
       width: fit-content;
       margin: 0 auto;
+      display: flex;
       hr {
         align-self: center;
         width: 50px;
         margin: 0 16px;
       }
-      display: flex;
       .next-step {
         display: flex;
         color: #bdbdbd;

@@ -2,7 +2,6 @@ export default {
    namespaced: true,
    state: {
       preOrder: [],
-      makeOrder: [],
       cartStatus: true,
       bagStatus: false,
    },
@@ -10,7 +9,7 @@ export default {
       toCart(state, productIndex) {
          state.cartStatus = false;
          state.bagStatus = true;
-         const productId = state.preOrder.find((e) => e._id == productIndex._id && e.size == productIndex.size);
+         const productId = state.preOrder.find((r) => r._id == productIndex._id && r.size == productIndex.size);
          if (productId != undefined) {
             const productIndex = state.preOrder.indexOf(productId);
             state.preOrder[productIndex].amount++;
