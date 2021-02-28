@@ -70,11 +70,45 @@
           </div>
         </div>
         <hr />
-        <div class="shipping-content">
-          <div class="shipping-header">
-            <h2>SHIPPING INFO</h2>
+
+        <div class="shipping-contents">
+          <div class="address-content">
+            <div class="address-header">
+              <h2>DELIVERY ADDRESS</h2>
+            </div>
+            <div class="address-info">
+              <div class="name">
+                <label for="name">Name</label>
+                <input type="text" disabled v-model="name" />
+              </div>
+              <div class="address-post">
+                <div class="address">
+                  <label for="address">Address</label>
+                  <input type="text" disabled v-model="address" />
+                </div>
+                <div class="post">
+                  <label for="post">Post</label>
+                  <input type="text" disabled v-model="post" />
+                </div>
+              </div>
+              <div class="city-phone">
+                <div class="city">
+                  <label for="city">City</label>
+                  <input type="text" disabled v-model="city" />
+                </div>
+                <div class="phone">
+                  <label for="phone">Phone</label>
+                  <input type="text" disabled v-model="phone" />
+                </div>
+              </div>
+              <div class="country">
+                <label for="phone">Country</label>
+                <input type="text" disabled v-model="country" />
+              </div>
+            </div>
           </div>
         </div>
+        <hr />
       </div>
     </div>
   </div>
@@ -83,6 +117,16 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
+  data() {
+    return {
+      name: "Miyamoto Musashi",
+      address: "Fatburs Kvarngata 25",
+      post: "155 96",
+      city: "Solna",
+      phone: "0727456465",
+      country: "Sweden",
+    };
+  },
   computed: {
     ...mapGetters("order", ["order", "cartStatus"]),
   },
@@ -90,6 +134,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.default-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 32px;
+}
 .summarize-container {
   max-width: 1440px;
   margin: 50px auto;
@@ -132,10 +181,9 @@ export default {
           margin: 16px 0 32px 0;
           ul {
             padding: 0;
-            display: grid;
+            @extend .default-grid;
             grid-template-columns: repeat(12, 2fr);
             grid-auto-flow: row;
-            grid-gap: 32px;
           }
           li {
             list-style: none;
@@ -180,8 +228,62 @@ export default {
           }
         }
       }
-      .shipping-content {
+      .address-contents-default {
+        margin: 6px 0 0 0;
+      }
+      .input-info {
+        display: flex;
+        flex-direction: column;
+      }
+      .shipping-contents {
         margin: 16px 0;
+        @extend .default-grid;
+        .address-content {
+          grid-column: span 4;
+          input {
+            margin: 6px 0;
+            padding: 8px 16px;
+            border-radius: 4px;
+            border: 1px solid #f2f2f2;
+          }
+          label {
+            font-size: 0.7rem;
+          }
+          .address-info {
+            margin: 16px 0 0 0;
+            .name {
+              @extend .input-info;
+            }
+            .address-post {
+              @extend .address-contents-default;
+              @extend .default-grid;
+              .address {
+                @extend .input-info;
+                grid-column: span 8;
+              }
+              .post {
+                @extend .input-info;
+                grid-column: span 4;
+              }
+            }
+            .city-phone {
+              @extend .address-contents-default;
+              @extend .default-grid;
+              .city {
+                @extend .input-info;
+                grid-column: span 6;
+              }
+              .phone {
+                @extend .input-info;
+                grid-column: span 6;
+              }
+            }
+            .country {
+              @extend .address-contents-default;
+              @extend .input-info;
+            }
+          }
+        }
       }
     }
   }

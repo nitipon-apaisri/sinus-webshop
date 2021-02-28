@@ -1,7 +1,7 @@
 export default {
    namespaced: true,
    state: {
-      preOrder: [],
+      items: [],
       cartStatus: true,
       bagStatus: false,
    },
@@ -9,23 +9,23 @@ export default {
       toCart(state, productIndex) {
          state.cartStatus = false;
          state.bagStatus = true;
-         const productId = state.preOrder.find((r) => r._id == productIndex._id && r.size == productIndex.size);
+         const productId = state.items.find((r) => r._id == productIndex._id && r.size == productIndex.size);
          if (productId != undefined) {
-            const productIndex = state.preOrder.indexOf(productId);
-            state.preOrder[productIndex].amount++;
+            const productIndex = state.items.indexOf(productId);
+            state.items[productIndex].amount++;
          } else {
-            state.preOrder.push(productIndex);
+            state.items.push(productIndex);
          }
       },
       increaseAmount(state, index) {
-         state.preOrder[index].amount++;
-         console.log(state.preOrder[index]);
+         state.items[index].amount++;
+         console.log(state.items[index]);
       },
       decreaseAmount(state, index) {
-         if (state.preOrder[index].amount !== 1) {
-            state.preOrder[index].amount--;
+         if (state.items[index].amount !== 1) {
+            state.items[index].amount--;
          }
-         console.log(state.preOrder[index]);
+         console.log(state.items[index]);
       },
    },
    actions: {
@@ -45,14 +45,14 @@ export default {
    },
    getters: {
       order(state) {
-         return state.preOrder;
+         return state.items;
       },
       cartStatus(state) {
          return state.cartStatus;
       },
       totalCost(state) {
          let allCost = [];
-         state.preOrder.forEach((r) => allCost.push(r.price * r.amount));
+         state.items.forEach((r) => allCost.push(r.price * r.amount));
          return allCost.reduce((a, b) => a + b);
       },
    },
