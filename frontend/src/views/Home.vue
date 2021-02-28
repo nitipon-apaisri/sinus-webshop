@@ -3,6 +3,7 @@
     <Hero />
     <Brands />
     <Products />
+    <Shipping/>
     <Footer />
   </div>
 </template>
@@ -12,12 +13,15 @@ import Hero from "@/components/Hero";
 import Brands from "@/components/Brands";
 import Products from "@/components/Products";
 import Footer from "@/components/Footer";
+import Shipping from "@/components/Shipping";
 export default {
   components: {
     Hero,
     Brands,
     Products,
+    Shipping,
     Footer,
+
   },
   methods: {},
   computed: {},
