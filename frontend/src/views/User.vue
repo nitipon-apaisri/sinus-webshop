@@ -17,9 +17,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-main {
-  max-width: 1440px;
-  box-sizing: border-box;
-  margin: 50px auto;
-}
 </style>

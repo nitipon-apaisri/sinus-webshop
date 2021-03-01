@@ -2,12 +2,14 @@
   <div class="container">
     <Navigation />
     <main>
-      <Hero />
-      <Brands />
-      <Products />
-      <div class="shop-extra-info">
-        <About />
-        <Guide />
+      <div class="home-container">
+        <Hero />
+        <Brands />
+        <Products />
+        <div class="shop-extra-info">
+          <About />
+          <Guide />
+        </div>
       </div>
     </main>
     <Footer />
@@ -38,33 +40,4 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.content-box {
-  margin: 24px 0;
-}
-.container {
-  width: 100%;
-
-  main {
-    max-width: 1440px;
-    margin: 0 auto;
-    .hero {
-      @extend .content-box;
-    }
-    .products {
-      @extend .content-box;
-    }
-    .shop-extra-info {
-      display: grid;
-      grid-auto-flow: row;
-      grid-gap: 24px;
-      grid-template-columns: repeat(12, 1fr);
-      .about {
-        grid-column: span 5;
-      }
-      .guide {
-        grid-column: span 7;
-      }
-    }
-  }
-}
 </style>

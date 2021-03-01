@@ -1,9 +1,9 @@
 <template>
-  <div class="content">
+  <main>
     <Navigation />
     <Single />
     <Footer />
-  </div>
+  </main>
 </template>
 
 <script>

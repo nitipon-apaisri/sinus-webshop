@@ -22,11 +22,4 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-.about {
-  p {
-    margin: 24px 0 0 0;
-    color: #d8d8d8;
-    font-size: 0.8rem;
-  }
-}
 </style>

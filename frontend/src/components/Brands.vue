@@ -42,29 +42,4 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-.brands {
-  .brands-logo {
-    margin: 16px 0 0 0;
-    display: grid;
-    grid-auto-flow: row;
-    grid-gap: 20px;
-    grid-template-columns: repeat(10, 1fr);
-    .logo {
-      box-sizing: border-box;
-      width: 108px;
-      height: 108px;
-      padding: 12px 0;
-      grid-column: span 1;
-      background-color: #fcfcfc;
-      display: flex;
-      border-radius: 8px;
-      justify-content: center;
-      img {
-        align-self: center;
-        max-width: 80px;
-        max-height: 60px;
-      }
-    }
-  }
-}
 </style>

@@ -1,0 +1,50 @@
+.content-box {
+   margin: 24px 0;
+}
+.primary-section-style {
+   width: 100%;
+   box-sizing: border-box;
+   background-color: #fff;
+   padding: 30px 40px;
+   border-radius: 20px;
+   text-align: left;
+   h1 {
+      letter-spacing: 0.09rem;
+   }
+}
+.default-button {
+   padding: 6px 18px;
+   background-color: #000;
+   border: 1px solid transparent;
+   border-radius: 4px;
+   color: #fff;
+   font-weight: bold;
+   font-size: 1rem;
+   display: flex;
+}
+.default-grid {
+   display: grid;
+   grid-template-columns: repeat(12, 1fr);
+   grid-gap: 32px;
+}
+.input-info {
+   display: flex;
+   flex-direction: column;
+}
+.address-contents-default {
+   margin: 6px 0 0 0;
+}
+.choice-default {
+   display: flex;
+   justify-content: space-between;
+   input {
+      align-self: center;
+   }
+   .icons {
+      display: flex;
+      img {
+         align-self: center;
+         margin: 0 6px 0 0;
+      }
+   }
+}
