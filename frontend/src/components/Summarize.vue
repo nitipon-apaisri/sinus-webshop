@@ -79,31 +79,31 @@
             <div class="address-info">
               <div class="name">
                 <label for="name">Name</label>
-                <input type="text" disabled v-model="name" />
+                <input type="text" disabled v-model="mokcUser.name" />
               </div>
               <div class="address-post">
                 <div class="address">
                   <label for="address">Address</label>
-                  <input type="text" disabled v-model="address" />
+                  <input type="text" disabled v-model="mokcUser.address" />
                 </div>
                 <div class="post">
                   <label for="post">Post</label>
-                  <input type="text" disabled v-model="post" />
+                  <input type="text" disabled v-model="mokcUser.post" />
                 </div>
               </div>
               <div class="city-phone">
                 <div class="city">
                   <label for="city">City</label>
-                  <input type="text" disabled v-model="city" />
+                  <input type="text" disabled v-model="mokcUser.city" />
                 </div>
                 <div class="phone">
                   <label for="phone">Phone</label>
-                  <input type="text" disabled v-model="phone" />
+                  <input type="text" disabled v-model="mokcUser.phone" />
                 </div>
               </div>
               <div class="country">
                 <label for="phone">Country</label>
-                <input type="text" disabled v-model="country" />
+                <input type="text" disabled v-model="mokcUser.country" />
               </div>
             </div>
           </div>
@@ -130,20 +130,20 @@
               <div class="card-info">
                 <div class="card-name">
                   <label for="cardname">Cardholder name</label>
-                  <input type="text" disabled v-model="name" />
+                  <input type="text" disabled v-model="mokcUser.name" />
                 </div>
                 <div class="card-sec">
                   <div class="card-no">
                     <label for="cardno">Card Number</label>
-                    <input type="text" disabled v-model="cardNo" />
+                    <input type="text" disabled v-model="mokcUser.cardNo" />
                   </div>
                   <div class="card-exp">
                     <label for="cardno">Expire</label>
-                    <input type="text" disabled v-model="exp" />
+                    <input type="text" disabled v-model="mokcUser.exp" />
                   </div>
                   <div class="card-cvc">
                     <label for="cardcvc">CVC</label>
-                    <input type="text" disabled v-model="CVC" />
+                    <input type="text" disabled v-model="mokcUser.CVC" />
                   </div>
                 </div>
               </div>
@@ -157,23 +157,11 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapState } from "vuex";
 export default {
-  data() {
-    return {
-      name: "Miyamoto Musashi",
-      address: "Fatburs Kvarngata 25",
-      post: "155 96",
-      city: "Solna",
-      phone: "0727456465",
-      country: "Sweden",
-      cardNo: "1324 5678 9100 5566",
-      exp: "10 / 25",
-      CVC: "557",
-    };
-  },
   computed: {
     ...mapGetters("order", ["order", "cartStatus"]),
+    ...mapState(["mokcUser"]),
   },
 };
 </script>
