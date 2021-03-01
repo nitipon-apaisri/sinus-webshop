@@ -107,6 +107,48 @@
               </div>
             </div>
           </div>
+          <div class="delivery-method">
+            <div class="delivery-content">
+              <div class="delivery-header">
+                <h2>DELIVERY METHOD</h2>
+              </div>
+            </div>
+            <div class="method-info">
+              <h3>DHL - EXPRESS</h3>
+              <img src="../assets/brands/dhl-exp.svg" alt="brand" />
+            </div>
+          </div>
+          <div class="payment-method">
+            <div class="payment-content">
+              <div class="payment-header">
+                <h2>PAYMENT METHOD</h2>
+              </div>
+              <div class="method-info">
+                <h3>CREDIT CARD</h3>
+                <img src="../assets/brands/master-card.svg" alt="brand" />
+              </div>
+              <div class="card-info">
+                <div class="card-name">
+                  <label for="cardname">Cardholder name</label>
+                  <input type="text" disabled v-model="name" />
+                </div>
+                <div class="card-sec">
+                  <div class="card-no">
+                    <label for="cardno">Card Number</label>
+                    <input type="text" disabled v-model="cardNo" />
+                  </div>
+                  <div class="card-exp">
+                    <label for="cardno">Expire</label>
+                    <input type="text" disabled v-model="exp" />
+                  </div>
+                  <div class="card-cvc">
+                    <label for="cardcvc">CVC</label>
+                    <input type="text" disabled v-model="CVC" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <hr />
       </div>
@@ -125,6 +167,9 @@ export default {
       city: "Solna",
       phone: "0727456465",
       country: "Sweden",
+      cardNo: "1324 5678 9100 5566",
+      exp: "10 / 25",
+      CVC: "557",
     };
   },
   computed: {
@@ -238,17 +283,17 @@ export default {
       .shipping-contents {
         margin: 16px 0;
         @extend .default-grid;
+        input {
+          margin: 6px 0;
+          padding: 8px 16px;
+          border-radius: 4px;
+          border: 1px solid #f2f2f2;
+        }
+        label {
+          font-size: 0.7rem;
+        }
         .address-content {
           grid-column: span 4;
-          input {
-            margin: 6px 0;
-            padding: 8px 16px;
-            border-radius: 4px;
-            border: 1px solid #f2f2f2;
-          }
-          label {
-            font-size: 0.7rem;
-          }
           .address-info {
             margin: 16px 0 0 0;
             .name {
@@ -281,6 +326,45 @@ export default {
             .country {
               @extend .address-contents-default;
               @extend .input-info;
+            }
+          }
+        }
+        .default-method {
+          grid-column: span 4;
+          .method-info {
+            margin: 32px 0 0 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+          }
+        }
+        .delivery-method {
+          @extend .default-method;
+        }
+        .payment-method {
+          @extend .default-method;
+          .method-info {
+            width: 50%;
+          }
+          .card-info {
+            margin: 16px 0 0 0;
+            .card-name {
+              @extend .input-info;
+            }
+            .card-sec {
+              display: grid;
+              grid-template-columns: repeat(12, 1fr);
+              grid-gap: 32px;
+              margin: 6px 0 0 0;
+              .card-no {
+                grid-column: span 6;
+                @extend .input-info;
+              }
+              .card-exp,
+              .card-cvc {
+                grid-column: span 3;
+                @extend .input-info;
+              }
             }
           }
         }
