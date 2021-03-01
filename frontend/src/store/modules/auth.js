@@ -8,7 +8,11 @@ export default {
       },
    },
    actions: {
-      async submitUser({ commit }, payload) {
+      async submitUser({ commit }) {
+         let payload = {
+            email: "admin@example.com",
+            password: "password",
+         }
          const responData = await axios.post("http://localhost:5000/api/auth", payload);
          console.log("User logged in and token is set");
          commit("submitUser", responData.data.token);
