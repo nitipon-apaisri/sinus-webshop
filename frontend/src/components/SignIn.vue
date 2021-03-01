@@ -47,6 +47,7 @@ export default {
       this.$store.dispatch("auth/submitUser", payload);
       setTimeout(() => {
         this.$router.push("/");
+        location.reload();
       }, 300);
     },
   },

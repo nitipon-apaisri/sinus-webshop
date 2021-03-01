@@ -4,6 +4,7 @@ import auth from "./modules/auth";
 import products from "./modules/products";
 import user from "./modules/user";
 import order from "./modules/order";
+import register from "./modules/register";
 
 Vue.use(Vuex);
 
@@ -28,6 +29,7 @@ export default new Vuex.Store({
       products,
       user,
       order,
+      register,
    },
    getters: {
       getMockUser(state) {

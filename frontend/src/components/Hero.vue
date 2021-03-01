@@ -1,5 +1,7 @@
 <template>
-  <div class="hero"></div>
+  <div class="hero">
+    <img src="../assets/hero.png" alt="hero" />
+  </div>
 </template>
 
 <script>
@@ -10,7 +12,9 @@ export default {};
 .hero {
   width: 100%;
   height: 500px;
-  background-color: #333;
-  border-radius: 20px;
+  img {
+    width: 100%;
+    border-radius: 20px;
+  }
 }
 </style>
