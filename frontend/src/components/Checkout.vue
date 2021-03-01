@@ -89,6 +89,13 @@
               <div class="checkout-cost">
                 <h3>Total: {{ totalCost }} SEK</h3>
               </div>
+              <button @click="toSum" class="nextButt">
+                <h3>CONTINUE</h3>
+                <font-awesome-icon
+                  :icon="['fas', 'caret-square-right']"
+                  size="2x"
+                />
+              </button>
             </div>
           </div>
         </div>
@@ -110,6 +117,9 @@ export default {
     decreaseAmount(index) {
       this.$store.dispatch("order/decreaseAmount", index);
     },
+    toSum() {
+      this.$router.push("/payment");
+    },
   },
 };
 </script>
@@ -122,12 +132,12 @@ export default {
       text-transform: uppercase;
       width: fit-content;
       margin: 0 auto;
+      display: flex;
       hr {
         align-self: center;
         width: 50px;
         margin: 0 16px;
       }
-      display: flex;
       .next-step {
         display: flex;
         color: #bdbdbd;
@@ -186,6 +196,7 @@ export default {
                     display: flex;
                     height: fit-content;
                     h3 {
+                      cursor: pointer;
                       margin: 0 32px;
                       align-self: center;
                     }
@@ -230,6 +241,26 @@ export default {
           }
         }
       }
+    }
+  }
+  .nextButt {
+    display: flex;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background-color: #00a79d;
+    color: #fff;
+    width: 100%;
+    justify-content: center;
+    margin: 16px 0 0 0;
+    cursor: pointer;
+    h3 {
+      letter-spacing: 0.03rem;
+      align-self: center;
+    }
+    svg {
+      align-self: center;
+      margin: 0 0 0 12px;
     }
   }
 }

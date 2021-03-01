@@ -8,7 +8,19 @@ import order from "./modules/order";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-   state: {},
+   state: {
+      mokcUser: {
+         name: "Miyamoto Musashi",
+         address: "Fatburs Kvarngata 25",
+         post: "155 96",
+         city: "Solna",
+         phone: "0727456465",
+         country: "Sweden",
+         cardNo: "1324 5678 9100 5566",
+         exp: "10 / 25",
+         CVC: "557",
+      },
+   },
    mutations: {},
    actions: {},
    modules: {
@@ -17,5 +29,9 @@ export default new Vuex.Store({
       user,
       order,
    },
-   getters: {},
+   getters: {
+      getMockUser(state) {
+         return state.mokcUser;
+      },
+   },
 });

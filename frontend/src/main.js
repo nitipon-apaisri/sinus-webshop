@@ -3,7 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faShoppingBag, faUser, faSearch, faAngleLeft, faStar, faShoppingCart, faMinusSquare, faPlusSquare } from "@fortawesome/free-solid-svg-icons";
+import { faShoppingBag, faUser, faSearch, faAngleLeft, faStar, faShoppingCart, faMinusSquare, faPlusSquare, faCaretSquareRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 library.add(faShoppingBag);
@@ -14,6 +14,7 @@ library.add(faStar);
 library.add(faShoppingCart);
 library.add(faMinusSquare);
 library.add(faPlusSquare);
+library.add(faCaretSquareRight);
 Vue.config.productionTip = false;
 
 new Vue({
