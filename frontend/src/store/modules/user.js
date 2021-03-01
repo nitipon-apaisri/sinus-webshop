@@ -17,8 +17,6 @@ export default {
    },
    actions: {
       async userData({ commit }) {
-         commit("setLoader", true);
-
          api.get("/me")
             .then((response) => {
                commit("checkUser", response.data);
@@ -27,6 +25,7 @@ export default {
             .catch((err) => {
                console.log(err);
             });
+         commit("setLoader", true);
       },
    },
    getters: {

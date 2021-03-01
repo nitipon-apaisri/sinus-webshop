@@ -5,21 +5,21 @@
         <h2>PERSONAL INFORMAION</h2>
         <hr />
         <label for="name">Name</label>
-        <input type="text" name="name" v-model="name" />
+        <input type="text" name="name" v-model="user.name" />
         <div class="address-info-1">
           <div class="street">
             <label for="street">Street</label>
-            <input type="text" name="street" v-model="address.street" />
+            <input type="text" name="street" v-model="user.address.street" />
           </div>
           <div class="zip">
             <label for="zip">Zip</label>
-            <input type="text" name="zip" v-model="address.zip" />
+            <input type="text" name="zip" v-model="user.address.zip" />
           </div>
         </div>
         <div class="address-info-2">
           <div class="city">
             <label for="street">City</label>
-            <input type="text" name="city" v-model="address.city" />
+            <input type="text" name="city" v-model="user.address.city" />
           </div>
           <div class="country">
             <label for="zip">Country</label>
@@ -32,16 +32,20 @@
         <hr />
         <div class="email">
           <label for="email">E-mail</label>
-          <input type="text" name="email" v-model="email" />
+          <input type="text" name="email" v-model="user.email" />
         </div>
         <div class="password-info">
           <div class="password">
             <label for="password">Password</label>
-            <input type="password" name="password" v-model="password" />
+            <input type="password" name="password" />
           </div>
           <div class="confirm-password">
             <label for="confirmPassword">Confirm Password</label>
-            <input type="password" name="confirmPassword" />
+            <input
+              type="password"
+              name="confirmPassword"
+              v-model="user.password"
+            />
           </div>
         </div>
       </section>
@@ -59,18 +63,22 @@
 export default {
   data() {
     return {
-      name: "",
-      email: "",
-      password: "",
-      address: {
-        street: "",
-        zip: "",
-        city: "",
+      user: {
+        name: "",
+        email: "",
+        password: "",
+        address: {
+          street: "",
+          zip: "",
+          city: "",
+        },
       },
     };
   },
   methods: {
-    register() {},
+    register() {
+      this.$store.dispatch("register/addUser", this.user);
+    },
   },
 };
 </script>
