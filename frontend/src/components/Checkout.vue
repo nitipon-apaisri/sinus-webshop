@@ -118,7 +118,7 @@ export default {
       this.$store.dispatch("order/decreaseAmount", index);
     },
     toSum() {
-      this.$router.push("/payment");
+      this.$router.push("/shipping");
     },
   },
 };

@@ -8,7 +8,7 @@
         <ul class="service">
           <li>
             <p>SHIPPING</p>
-            <img src="../assets/Truck.svg" alt="" />
+            <!-- <img src="../assets/Truck.svg" alt="" /> -->
           </li>
           <li>|</li>
           <li>
@@ -44,7 +44,7 @@
             <ul class="cards">
               <li><img src="../assets/visa.svg" alt="" /></li>
               <li><img src="../assets/Mastercard.svg" alt="" /></li>
-              <li><img src="../assets/amex.svg" alt="" /></li>
+              <li><img src="../assets/brands/amex.svg" alt="" /></li>
               <li><img src="../assets/paypal.svg" alt="" /></li>
               <li><img src="../assets/GooglePay.svg" alt="" /></li>
               <li><img src="../assets/ApplePay.svg" alt="" /></li>
