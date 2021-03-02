@@ -151,6 +151,7 @@
           </div>
         </div>
         <hr />
+        <button @click="confirm">Confirm</button>
       </div>
     </div>
   </div>
@@ -162,6 +163,11 @@ export default {
   computed: {
     ...mapGetters("order", ["order", "cartStatus"]),
     ...mapState(["mokcUser"]),
+  },
+  methods: {
+    confirm() {
+      this.$store.dispatch("order/confirm");
+    },
   },
 };
 </script>

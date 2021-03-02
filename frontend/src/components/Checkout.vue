@@ -67,7 +67,7 @@
                       <font-awesome-icon
                         :icon="['fas', 'plus-square']"
                         size="2x"
-                        @click="increaseAmount(index)"
+                        @click="increaseAmount(item._id)"
                       />
                     </div>
                   </div>
@@ -111,8 +111,8 @@ export default {
     ...mapGetters("order", ["order", "totalCost", "cartStatus"]),
   },
   methods: {
-    increaseAmount(index) {
-      this.$store.dispatch("order/increaseAmount", index);
+    increaseAmount(id) {
+      this.$store.dispatch("order/increaseAmount", id);
     },
     decreaseAmount(index) {
       this.$store.dispatch("order/decreaseAmount", index);

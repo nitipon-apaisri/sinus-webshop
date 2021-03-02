@@ -1,31 +1,44 @@
+import api from "../../api/api";
+const userToken = sessionStorage.getItem("user");
+api.defaults.headers.common["Authorization"] = `Bearer ${userToken}`;
 export default {
    namespaced: true,
    state: {
-      items: [],
-      cartStatus: true,
+      preOrder: {
+         items: [],
+      },
+      makeOrder: {
+         items: [],
+      },
       bagStatus: false,
+      cartStatus: true,
    },
    mutations: {
       toCart(state, productIndex) {
          state.cartStatus = false;
          state.bagStatus = true;
-         const productId = state.items.find((r) => r._id == productIndex._id && r.size == productIndex.size);
+         const productId = state.preOrder.items.find((r) => r._id == productIndex._id && r.size == productIndex.size);
          if (productId != undefined) {
-            const productIndex = state.items.indexOf(productId);
-            state.items[productIndex].amount++;
+            const productIndex = state.preOrder.items.indexOf(productId);
+            state.preOrder.items[productIndex].amount++;
          } else {
-            state.items.push(productIndex);
+            state.preOrder.items.push(productIndex);
          }
       },
-      increaseAmount(state, index) {
-         state.items[index].amount++;
-         console.log(state.items[index]);
+      increaseAmount(state, id) {
+         state.preOrder.items.find((r) => r._id == id).amount++;
+         console.log(state.preOrder.items);
       },
       decreaseAmount(state, index) {
-         if (state.items[index].amount !== 1) {
-            state.items[index].amount--;
+         if (state.preOrder.items[index].amount !== 1) {
+            state.preOrder.items[index].amount--;
          }
-         console.log(state.items[index]);
+         console.log(state.preOrder.items[index]);
+      },
+      async confirm(state) {
+         state.preOrder.items.forEach((r) => state.makeOrder.items.push(r._id));
+         // console.log(state.preOrder);
+         await api.post("/orders", state.makeOrder);
       },
    },
    actions: {
@@ -42,17 +55,20 @@ export default {
       decreaseAmount({ commit }, index) {
          commit("decreaseAmount", index);
       },
+      confirm({ commit }) {
+         commit("confirm");
+      },
    },
    getters: {
       order(state) {
-         return state.items;
+         return state.preOrder.items;
       },
       cartStatus(state) {
          return state.cartStatus;
       },
       totalCost(state) {
          let allCost = [];
-         state.items.forEach((r) => allCost.push(r.price * r.amount));
+         state.preOrder.items.forEach((r) => allCost.push(r.price * r.amount));
          return allCost.reduce((a, b) => a + b);
       },
    },
