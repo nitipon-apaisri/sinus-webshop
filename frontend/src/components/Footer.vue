@@ -8,7 +8,7 @@
         <ul class="service">
           <li>
             <p>SHIPPING</p>
-            <img src="../assets/Truck.svg" alt="" />
+            <img src="../assets/WhiteTruck.svg" alt="" />
           </li>
           <li>|</li>
           <li>

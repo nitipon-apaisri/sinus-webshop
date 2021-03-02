@@ -9,6 +9,9 @@
         <About />
         <Guide />
       </div>
+      <div>
+        <Shipping/>
+      </div>
     </main>
     <Footer />
   </div>
@@ -22,6 +25,7 @@ import Navigation from "@/components/Navigation.vue";
 import About from "@/components/About";
 import Guide from "../components/Guide.vue";
 import Footer from "../components/Footer.vue";
+import Shipping from '../components/Shipping.vue';
 export default {
   components: {
     Hero,
@@ -31,6 +35,7 @@ export default {
     About,
     Guide,
     Footer,
+    Shipping,
   },
 
   Footermethods: {},
