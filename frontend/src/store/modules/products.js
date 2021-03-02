@@ -1,35 +1,38 @@
-import axios from "axios";
+import api from "../../api/api";
 export default {
    namespaced: true,
    state: {
+      loading: undefined,
       allProducts: [],
-      product: [],
+      oneProduct: {},
    },
    mutations: {
       products(state, product) {
-         product.forEach((r) => state.allProducts.push(r));
-         console.log(JSON.parse(JSON.stringify(state.allProducts)));
+         if (state.allProducts.length <= 0) {
+            product.forEach((r) => state.allProducts.push(r));
+         }
       },
       getOneProduct(state, product) {
-         state.product.push(product);
-         console.log(product);
+         state.oneProduct = product;
+      },
+      setLoader(state, value) {
+         state.loading = value;
       },
    },
    actions: {
       async getAllProducts({ commit }) {
-         axios
-            .get("http://localhost:5000/api/products")
+         commit("setLoader", true);
+         api.get("http://localhost:5000/api/products")
             .then((res) => {
                commit("products", res.data);
+               commit("setLoader", false);
             })
             .catch((err) => {
                console.log(err);
             });
       },
-      async getOneProduct({ commit }) {
-         const payload = "KqhH2cqSLNW3Ae0Z";
-         axios
-            .get("http://localhost:5000/api/products/" + payload)
+      async getOneProduct({ commit }, payload) {
+         api.get("http://localhost:5000/api/products/" + payload)
             .then((res) => {
                commit("getOneProduct", res.data);
             })
@@ -41,6 +44,9 @@ export default {
    getters: {
       products(state) {
          return state.allProducts;
+      },
+      product(state) {
+         return state.oneProduct;
       },
    },
 };

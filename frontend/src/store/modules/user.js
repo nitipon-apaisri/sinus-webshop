@@ -1,33 +1,37 @@
-import axios from "axios";
+import api from "../../api/api";
+const userToken = sessionStorage.getItem("user");
+api.defaults.headers.common["Authorization"] = `Bearer ${userToken}`;
 export default {
-  namespaced: true,
-  state: {
-    user: []
-  },
-  mutations: {
-    checkUser(state, userInfo) {
-      state.user.push(userInfo)
-      console.log(state.user);
-    }
-  },
-  actions: {
-    async userData({ commit }) {
+   namespaced: true,
+   state: {
+      loading: null,
+      user: {},
+   },
+   mutations: {
+      setLoader(state, value) {
+         state.loading = value;
+      },
+      checkUser(state, userInfo) {
+         state.user = userInfo;
+      },
+   },
+   actions: {
+      async userData({ commit }) {
+         commit("setLoader", true);
 
-      const userToken = sessionStorage.getItem("user")
-
-      axios
-        .get("http://localhost:5000/api/me", {
-          headers: {
-            Authorization: `Bearer ${userToken}`,
-          },
-        }
-        )
-        .then((response) => {
-          commit("checkUser", response.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
-  },
+         api.get("/me")
+            .then((response) => {
+               commit("checkUser", response.data);
+               commit("setLoader", false);
+            })
+            .catch((err) => {
+               console.log(err);
+            });
+      },
+   },
+   getters: {
+      getUser(state) {
+         return state.user;
+      },
+   },
 };

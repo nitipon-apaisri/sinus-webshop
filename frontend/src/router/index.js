@@ -1,8 +1,12 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import SignInUp from "../views/SignInUp.vue";
-
+import Auth from "../views/Auth.vue";
+import Register from "../views/Register.vue";
+import User from "../views/User.vue";
+import Info from "../views/Info.vue";
+import Checkout from "../views/Checkout.vue";
+import Summarize from "../views/Summarize.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -16,9 +20,34 @@ const routes = [
       name: "About",
    },
    {
-      path: "/sign-in-up",
-      name: "SignInUp",
-      component: SignInUp,
+      path: "/auth",
+      name: "Auth",
+      component: Auth,
+   },
+   {
+      path: "/register",
+      name: "Register",
+      component: Register,
+   },
+   {
+      path: "/account",
+      name: "User",
+      component: User,
+   },
+   {
+      path: "/info/:id",
+      name: "Info",
+      component: Info,
+   },
+   {
+      path: "/checkout",
+      name: "Checkout",
+      component: Checkout,
+   },
+   {
+      path: "/summarize",
+      name: "Summarize",
+      component: Summarize,
    },
 ];
 

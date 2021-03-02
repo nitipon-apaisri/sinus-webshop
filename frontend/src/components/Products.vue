@@ -1,10 +1,10 @@
 <template>
-  <section class="products">
+  <section class="products primary-section-style">
     <h1>PRODUCTS</h1>
     <ul>
-      <li v-for="product in products" :key="product.id">
+      <li v-for="(product, index) in products" :key="index">
         <div class="the-product">
-          <div class="product">
+          <div class="product" @click="viewInfo(index)">
             <div class="product-img">
               <img
                 :src="require(`../assets/${product.imgFile}`)"
@@ -18,7 +18,7 @@
               <p>{{ product.category }}</p>
             </div>
             <div class="product-footer">
-              <button>
+              <button @click="viewInfo(index)">
                 <font-awesome-icon :icon="['fas', 'shopping-bag']" />
               </button>
               <h5>{{ product.price }} SEK</h5>
@@ -33,6 +33,14 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
+  methods: {
+    viewInfo(index) {
+      this.$store.dispatch("products/getOneProduct", this.products[index]._id);
+      setTimeout(() => {
+        this.$router.push("info/" + this.products[index]._id);
+      }, 300);
+    },
+  },
   computed: {
     ...mapGetters("products", ["products"]),
   },
@@ -44,15 +52,6 @@ export default {
 
 <style lang="scss" scoped>
 .products {
-  width: 100%;
-  box-sizing: border-box;
-  background-color: #fff;
-  padding: 30px 40px;
-  border-radius: 20px;
-  text-align: left;
-  h1 {
-    letter-spacing: 0.09rem;
-  }
   ul {
     padding: 0;
     display: grid;
@@ -63,6 +62,7 @@ export default {
       list-style: none;
       .the-product {
         .product {
+          cursor: pointer;
           box-sizing: border-box;
           width: 200px;
           height: 200px;

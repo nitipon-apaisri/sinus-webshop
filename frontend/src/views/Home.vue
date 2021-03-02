@@ -1,9 +1,15 @@
 <template>
   <div class="container">
-    <Hero />
-    <Brands />
-    <Products />
-    <Shipping/>
+    <Navigation />
+    <main>
+      <Hero />
+      <Brands />
+      <Products />
+      <div class="shop-extra-info">
+        <About />
+        <Guide />
+      </div>
+    </main>
     <Footer />
   </div>
 </template>
@@ -12,18 +18,22 @@
 import Hero from "@/components/Hero";
 import Brands from "@/components/Brands";
 import Products from "@/components/Products";
-import Footer from "@/components/Footer";
-import Shipping from "@/components/Shipping";
+import Navigation from "@/components/Navigation.vue";
+import About from "@/components/About";
+import Guide from "../components/Guide.vue";
+import Footer from "../components/Footer.vue";
 export default {
   components: {
     Hero,
     Brands,
     Products,
-    Shipping,
+    Navigation,
+    About,
+    Guide,
     Footer,
-
   },
-  methods: {},
+
+  Footermethods: {},
   computed: {},
 };
 </script>
@@ -33,11 +43,28 @@ export default {
 }
 .container {
   width: 100%;
-  .hero {
-    @extend .content-box;
-  }
-  .products {
-    @extend .content-box;
+
+  main {
+    max-width: 1440px;
+    margin: 0 auto;
+    .hero {
+      @extend .content-box;
+    }
+    .products {
+      @extend .content-box;
+    }
+    .shop-extra-info {
+      display: grid;
+      grid-auto-flow: row;
+      grid-gap: 24px;
+      grid-template-columns: repeat(12, 1fr);
+      .about {
+        grid-column: span 5;
+      }
+      .guide {
+        grid-column: span 7;
+      }
+    }
   }
 }
 </style>

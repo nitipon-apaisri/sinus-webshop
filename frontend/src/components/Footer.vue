@@ -1,75 +1,77 @@
 <template>
-  <div class="container">
-    <div class="image">
-      <img src="../assets/sinus-logo.c1250acc 1.svg" alt="" />
-    </div>
-    <div>
-      <ul class="service">
-        <li>
-          <p>SHIPPING</p>
-          <img src="../assets/Truck.svg" alt="" />
-        </li>
-        <li>|</li>
-        <li>
-          <p>EXCHANGE</p>
-          <img src="../assets/ArrowsLeftRight.svg" alt="" />
-        </li>
-        <li>|</li>
-        <li>
-          <p>RETURN</p>
-          <img src="../assets/ArrowUUpLeft.svg" alt="" />
-        </li>
-        <li>|</li>
-        <li>
-          <p>FAQ</p>
-          <img src="../assets/Question.svg" alt="" />
-        </li>
-        <li>|</li>
-        <li>
-          <p>SIZE CONVERSION</p>
-          <img src="../assets/AlignCenterHorizontal.svg" alt="" />
-        </li>
-        <li>|</li>
-        <li>
-          <p>CUSTOMER SERVICE</p>
-          <img src="../assets/ChatCircleText.svg" alt="" />
-        </li>
-      </ul>
-    </div>
-    <div>
-      <ul class="options">
-        <li class="payment-options">
-          PAYMENT OPTIONS
-          <ul class="cards">
-            <li><img src="../assets/visa.svg" alt="" /></li>
-            <li><img src="../assets/Mastercard.svg" alt="" /></li>
-            <li><img src="../assets/amex.svg" alt="" /></li>
-            <li><img src="../assets/paypal.svg" alt="" /></li>
-            <li><img src="../assets/GooglePay.svg" alt="" /></li>
-            <li><img src="../assets/ApplePay.svg" alt="" /></li>
-          </ul>
-        </li>
-        <li class="follow-us">
-          FOLLOW US
-          <ul class="social-media">
-            <li><img src="../assets/FacebookLogo.svg" alt="" /></li>
-            <li><img src="../assets/InstagramLogo.svg" alt="" /></li>
-            <li><img src="../assets/TwitterLogo.svg" alt="" /></li>
-            <li><img src="../assets/YoutubeLogo.svg" alt="" /></li>
-          </ul>
-        </li>
-        <li class="legal-notice">
-          LEGAL NOTICE
-          <ul class="terms-conditions">
-            <li class="T-C-P">
-              <p>TERMS & CONDITIONS</p>
-              <p class="privacy">PRIVACY</p>
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <div class="copyright">
-        <p>© SINUS SKATE SHOP 2020</p>
+  <div class="footer-container">
+    <div class="footer-content">
+      <div class="image">
+        <img src="../assets/sinus-logo.c1250acc 1.svg" alt="" />
+      </div>
+      <div>
+        <ul class="service">
+          <li>
+            <p>SHIPPING</p>
+            <img src="../assets/Truck.svg" alt="" />
+          </li>
+          <li>|</li>
+          <li>
+            <p>EXCHANGE</p>
+            <img src="../assets/ArrowsLeftRight.svg" alt="" />
+          </li>
+          <li>|</li>
+          <li>
+            <p>RETURN</p>
+            <img src="../assets/ArrowUUpLeft.svg" alt="" />
+          </li>
+          <li>|</li>
+          <li>
+            <p>FAQ</p>
+            <img src="../assets/Question.svg" alt="" />
+          </li>
+          <li>|</li>
+          <li>
+            <p>SIZE CONVERSION</p>
+            <img src="../assets/AlignCenterHorizontal.svg" alt="" />
+          </li>
+          <li>|</li>
+          <li>
+            <p>CUSTOMER SERVICE</p>
+            <img src="../assets/ChatCircleText.svg" alt="" />
+          </li>
+        </ul>
+      </div>
+      <div>
+        <ul class="options">
+          <li class="payment-options">
+            PAYMENT OPTIONS
+            <ul class="cards">
+              <li><img src="../assets/visa.svg" alt="" /></li>
+              <li><img src="../assets/Mastercard.svg" alt="" /></li>
+              <li><img src="../assets/amex.svg" alt="" /></li>
+              <li><img src="../assets/paypal.svg" alt="" /></li>
+              <li><img src="../assets/GooglePay.svg" alt="" /></li>
+              <li><img src="../assets/ApplePay.svg" alt="" /></li>
+            </ul>
+          </li>
+          <li class="follow-us">
+            FOLLOW US
+            <ul class="social-media">
+              <li><img src="../assets/FacebookLogo.svg" alt="" /></li>
+              <li><img src="../assets/InstagramLogo.svg" alt="" /></li>
+              <li><img src="../assets/TwitterLogo.svg" alt="" /></li>
+              <li><img src="../assets/YoutubeLogo.svg" alt="" /></li>
+            </ul>
+          </li>
+          <li class="legal-notice">
+            LEGAL NOTICE
+            <ul class="terms-conditions">
+              <li class="T-C-P">
+                <p>TERMS & CONDITIONS</p>
+                <p class="privacy">PRIVACY</p>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <div class="copyright">
+          <p>© SINUS SKATE SHOP 2020</p>
+        </div>
       </div>
     </div>
   </div>
@@ -112,12 +114,17 @@ export default {};
   display: flex;
   align-items: center;
 }
-.container {
+.footer-container {
   width: 100%;
-  height: 45vh;
+  margin: 80px 0 0 0;
   background-color: rgba(0, 0, 0, 0.89);
 }
-
+.footer-content {
+  box-sizing: border-box;
+  padding: 16px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
 .service {
   color: white;
   list-style: none;
