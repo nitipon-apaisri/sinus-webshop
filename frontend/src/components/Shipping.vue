@@ -99,4 +99,5 @@
 </script>
 
 <style lang="scss" scoped>
+@import "../scss/shipping"
 </style>
