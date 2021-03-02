@@ -37,10 +37,37 @@
           </div>
         </div>
       </div>
-      <section>
+      <section class="user-order-container">
         <h1>Order History</h1>
         <hr />
-        <p>{{ getUser.orderHistory }}</p>
+        <div class="user-order-content">
+          <ul>
+            <li v-for="item in getUserOrder" :key="item._id">
+              <div class="order-item">
+                <ul>
+                  <li v-for="item in item.items" :key="item._id">
+                    <div class="the-product">
+                      <div class="product">
+                        <div class="product-img">
+                          <img
+                            :src="require(`../assets/${item.imgFile}`)"
+                            :alt="item.shortDesc"
+                          />
+                        </div>
+                      </div>
+                      <div class="product-info">
+                        <div class="product-title">
+                          <h4>{{ item.title }}</h4>
+                          <h4>Amount: {{ item.amount }}</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
       </section>
     </article>
   </div>
@@ -51,10 +78,11 @@ import { mapGetters, mapState } from "vuex";
 export default {
   beforeMount() {
     this.$store.dispatch("user/userData");
-    // this.$store.dispatch("order/");
+    this.$store.dispatch("order/getOrder");
   },
   computed: {
     ...mapGetters("user", ["getUser"]),
+    ...mapGetters("order", ["getUserOrder"]),
     ...mapState("user", ["loading"]),
   },
 };

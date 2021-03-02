@@ -167,6 +167,7 @@ export default {
   methods: {
     confirm() {
       this.$store.dispatch("order/confirm");
+      this.$router.push("/confirm");
     },
   },
 };
