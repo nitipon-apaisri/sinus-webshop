@@ -10,6 +10,7 @@ export default {
       makeOrder: {
          items: [],
       },
+      userOrder: [],
       bagStatus: false,
       cartStatus: true,
    },
@@ -40,6 +41,10 @@ export default {
          // console.log(state.preOrder);
          await api.post("/orders", state.makeOrder);
       },
+      async getOrder(state) {
+         let req = await api.get("/orders");
+         req.data.forEach((r) => state.userOrder.push(r));
+      },
    },
    actions: {
       addToCart({ commit }, [productIndex, productSize]) {
@@ -58,6 +63,9 @@ export default {
       confirm({ commit }) {
          commit("confirm");
       },
+      getOrder({ commit }) {
+         commit("getOrder");
+      },
    },
    getters: {
       order(state) {
@@ -70,6 +78,9 @@ export default {
          let allCost = [];
          state.preOrder.items.forEach((r) => allCost.push(r.price * r.amount));
          return allCost.reduce((a, b) => a + b);
+      },
+      getUserOrder(state) {
+         return state.userOrder;
       },
    },
 };
