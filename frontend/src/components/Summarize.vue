@@ -151,7 +151,31 @@
           </div>
         </div>
         <hr />
-        <button @click="confirm">Confirm</button>
+        <div class="summarize-footer">
+          <div class="footer-content">
+            <div class="details">
+              <div class="subtotal">
+                <h3>SUBTOTAL:</h3>
+                <h3>{{ totalCost }} SEK</h3>
+              </div>
+              <div class="delivery-cost">
+                <h3>DHL - EXPRESS: 199 SEK</h3>
+                <h3>199 SEK</h3>
+              </div>
+              <div class="total">
+                <h3>TOTAL:</h3>
+                <h3>{{ totalCost + 199 }} SEK</h3>
+              </div>
+            </div>
+            <button @click="confirm">
+              <h4>CONFIRM</h4>
+              <font-awesome-icon
+                :icon="['fas', 'caret-square-right']"
+                size="lg"
+              />
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -161,7 +185,7 @@
 import { mapGetters, mapState } from "vuex";
 export default {
   computed: {
-    ...mapGetters("order", ["order", "cartStatus"]),
+    ...mapGetters("order", ["order", "cartStatus", "totalCost"]),
     ...mapState(["mokcUser"]),
   },
   methods: {

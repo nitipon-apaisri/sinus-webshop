@@ -1,9 +1,11 @@
 <template>
-  <main>
+  <div class="container">
     <Navigation />
-    <Single />
+    <main>
+      <Single />
+    </main>
     <Footer />
-  </main>
+  </div>
 </template>
 
 <script>
