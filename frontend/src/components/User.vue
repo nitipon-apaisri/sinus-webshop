@@ -37,6 +37,11 @@
           </div>
         </div>
       </div>
+      <section>
+        <h1>Order History</h1>
+        <hr />
+        <p>{{ getUser.orderHistory }}</p>
+      </section>
     </article>
   </div>
 </template>
@@ -46,9 +51,10 @@ import { mapGetters, mapState } from "vuex";
 export default {
   beforeMount() {
     this.$store.dispatch("user/userData");
+    // this.$store.dispatch("order/");
   },
   computed: {
-    ...mapGetters("user", ["getUser", "getUserAddress"]),
+    ...mapGetters("user", ["getUser"]),
     ...mapState("user", ["loading"]),
   },
 };
