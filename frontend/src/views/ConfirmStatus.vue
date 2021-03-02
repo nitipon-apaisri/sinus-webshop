@@ -2,20 +2,20 @@
   <div class="container">
     <Navigation />
     <main>
-      <Single />
+      <Confirm />
     </main>
     <Footer />
   </div>
 </template>
 
 <script>
+import Confirm from "../components/Confirm.vue";
 import Footer from "../components/Footer.vue";
 import Navigation from "../components/Navigation.vue";
-import Single from "../components/Single.vue";
 export default {
-  components: { Single, Navigation, Footer },
+  components: { Footer, Navigation, Confirm },
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 </style>

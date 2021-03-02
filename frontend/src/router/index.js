@@ -9,6 +9,7 @@ import Checkout from "../views/Checkout.vue";
 import Shipping from "../views/Shipping.vue";
 import Summarize from "../views/Summarize.vue";
 import Payment from "../views/Payment.vue";
+import Confirm from "../views/ConfirmStatus.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -60,6 +61,11 @@ const routes = [
       path: "/payment",
       name: "Payment",
       component: Payment,
+   },
+   {
+      path: "/confirm",
+      name: "Confirm",
+      component: Confirm,
    },
 ];
 
