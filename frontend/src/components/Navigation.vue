@@ -31,40 +31,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-nav {
-  padding: 20px 40px;
-
-  background-color: #fff;
-  img {
-    max-width: 120px;
-  }
-  .menu-list {
-    display: flex;
-    max-width: 1440px;
-    margin: 0 auto;
-    justify-content: space-between;
-    ul {
-      margin: 0;
-      width: 400px;
-      justify-content: space-between;
-      display: flex;
-      li {
-        align-self: center;
-        list-style: none;
-        a {
-          color: #000;
-          font-weight: bolder;
-          letter-spacing: 0.06rem;
-          text-decoration: none;
-        }
-      }
-    }
-    .search {
-      align-self: center;
-    }
-    .shop-services {
-      align-self: center;
-    }
-  }
-}
 </style>

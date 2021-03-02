@@ -8,9 +8,7 @@ export default {
    },
    mutations: {
       products(state, product) {
-         if (state.allProducts.length <= 0) {
-            product.forEach((r) => state.allProducts.push(r));
-         }
+         product.forEach((r) => state.allProducts.push(r));
       },
       getOneProduct(state, product) {
          state.oneProduct = product;

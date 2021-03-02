@@ -6,6 +6,7 @@
 
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Oswald:wght@400;500;600;700&display=swap");
+@import "./scss/main";
 body {
   margin: 0 !important;
   background-color: #f5f6fc;
@@ -25,17 +26,6 @@ body {
   }
   button {
     cursor: pointer;
-  }
-  .primary-section-style {
-    width: 100%;
-    box-sizing: border-box;
-    background-color: #fff;
-    padding: 30px 40px;
-    border-radius: 20px;
-    text-align: left;
-    h1 {
-      letter-spacing: 0.09rem;
-    }
   }
   hr {
     border: 0;

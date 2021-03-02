@@ -1,5 +1,5 @@
 <template>
-  <div class="payment-container primary-section-style">
+  <div class="payment-container">
     <div class="payment-contents">
       <div class="payment-header">
         <div class="current-step">
@@ -7,10 +7,10 @@
           <hr />
           <h4>shipping info</h4>
           <hr />
-          <h4>payment</h4>
-          <hr />
         </div>
         <div class="next-step">
+          <h4>payment</h4>
+          <hr />
           <h4>confirmation</h4>
           <hr />
           <h4>done</h4>
@@ -24,31 +24,31 @@
           <div class="address-info">
             <div class="name">
               <label for="name">Name</label>
-              <input type="text" disabled v-model="getMockUser.name" />
+              <input type="text" />
             </div>
             <div class="address-post">
               <div class="address">
                 <label for="address">Address</label>
-                <input type="text" disabled v-model="getMockUser.address" />
+                <input type="text" />
               </div>
               <div class="post">
                 <label for="post">Post</label>
-                <input type="text" disabled v-model="getMockUser.post" />
+                <input type="text" />
               </div>
             </div>
             <div class="city-phone">
               <div class="city">
                 <label for="city">City</label>
-                <input type="text" disabled v-model="getMockUser.city" />
+                <input type="text" />
               </div>
               <div class="phone">
                 <label for="phone">Phone</label>
-                <input type="text" disabled v-model="getMockUser.phone" />
+                <input type="text" />
               </div>
             </div>
             <div class="country">
               <label for="phone">Country</label>
-              <input type="text" disabled v-model="getMockUser.country" />
+              <input type="text" />
             </div>
           </div>
         </div>
@@ -87,7 +87,7 @@
         </div>
       </div>
     </div>
-    <button @click="toSum" class="nextButt">
+    <button @click="toPayment" class="nextButt">
       <h3>CONTINUE</h3>
       <font-awesome-icon :icon="['fas', 'caret-square-right']" size="2x" />
     </button>
@@ -95,15 +95,11 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 export default {
   methods: {
-    toSum() {
-      this.$router.push("/summarize");
+    toPayment() {
+      this.$router.push("/payment");
     },
-  },
-  computed: {
-    ...mapGetters(["getMockUser"]),
   },
 };
 </script>

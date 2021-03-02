@@ -1,17 +1,19 @@
 <template>
-  <div class="sing-in-up">
-    <form @submit.prevent="login">
-      <input type="text" name="email" placeholder="Email" v-model="email" />
-      <input
-        type="password"
-        name="password"
-        placeholder="password"
-        v-model="password"
-      />
-      <button>Log in</button>
-    </form>
-    <button @click="getUser">Get User</button>
-  </div>
+  <main>
+    <div class="sing-in-up">
+      <form @submit.prevent="login">
+        <input type="text" name="email" placeholder="Email" v-model="email" />
+        <input
+          type="password"
+          name="password"
+          placeholder="password"
+          v-model="password"
+        />
+        <button>Log in</button>
+      </form>
+      <button @click="getUser">Get User</button>
+    </div>
+  </main>
 </template>
 
 <script>

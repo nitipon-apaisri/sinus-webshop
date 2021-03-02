@@ -23,25 +23,4 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-.guide {
-  .contents {
-    margin: 24px 0 0 0;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-auto-flow: row;
-    grid-gap: 20px;
-    .guide-content {
-      grid-column: span 4;
-      .mock-img {
-        background-color: #f2f2f2;
-        width: 100%;
-        height: 218px;
-        border-radius: 10px;
-      }
-      h4 {
-        margin: 12px 0 0 0;
-      }
-    }
-  }
-}
 </style>

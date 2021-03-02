@@ -6,6 +6,7 @@ import Register from "../views/Register.vue";
 import User from "../views/User.vue";
 import Info from "../views/Info.vue";
 import Checkout from "../views/Checkout.vue";
+import Shipping from "../views/Shipping.vue";
 import Summarize from "../views/Summarize.vue";
 import Payment from "../views/Payment.vue";
 Vue.use(VueRouter);
@@ -44,6 +45,11 @@ const routes = [
       path: "/checkout",
       name: "Checkout",
       component: Checkout,
+   },
+   {
+      path: "/shipping",
+      name: "Shipping",
+      component: Shipping,
    },
    {
       path: "/summarize",
