@@ -31,10 +31,12 @@ export default {
          console.log(state.preOrder.items);
       },
       decreaseAmount(state, index) {
-         if (state.preOrder.items[index].amount !== 1) {
-            state.preOrder.items[index].amount--;
+         if (state.preOrder.items.length !== 1) {
+            state.preOrder.items.splice(index, 1);
+         } else {
+            state.cartStatus = true;
          }
-         console.log(state.preOrder.items[index]);
+         console.log(state.preOrder.items.length);
       },
       async confirm(state) {
          state.preOrder.items.forEach((r) => state.makeOrder.items.push(r._id));

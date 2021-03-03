@@ -58,16 +58,11 @@
                       </div>
                     </div>
                     <div class="actions">
-                      <font-awesome-icon
-                        :icon="['fas', 'minus-square']"
-                        size="2x"
-                        @click="decreaseAmount(index)"
-                      />
                       <h3>{{ item.amount }}X</h3>
                       <font-awesome-icon
-                        :icon="['fas', 'plus-square']"
+                        :icon="['fas', 'times']"
                         size="2x"
-                        @click="increaseAmount(item._id)"
+                        @click="decreaseAmount(index)"
                       />
                     </div>
                   </div>
@@ -111,9 +106,6 @@ export default {
     ...mapGetters("order", ["order", "totalCost", "cartStatus"]),
   },
   methods: {
-    increaseAmount(id) {
-      this.$store.dispatch("order/increaseAmount", id);
-    },
     decreaseAmount(index) {
       this.$store.dispatch("order/decreaseAmount", index);
     },

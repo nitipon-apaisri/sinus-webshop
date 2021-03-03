@@ -16,6 +16,7 @@ import {
    faCheckCircle,
    faHome,
    faSignOutAlt,
+   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 Vue.component("font-awesome-icon", FontAwesomeIcon);
@@ -31,6 +32,7 @@ library.add(faCaretSquareRight);
 library.add(faCheckCircle);
 library.add(faHome);
 library.add(faSignOutAlt);
+library.add(faTimes);
 Vue.config.productionTip = false;
 
 new Vue({
