@@ -1,9 +1,7 @@
 # SINUS Webshop
 
 ## Arbetssätt
-Samla era erfarenheter från Kanban, Scrum och diskussionerna av Modern Agile och kom överens i 
-gruppen om vilka delar och hur ni ska inkorporera detta i ert arbete. 
-Dokumentera vad ni kommer överens om i README.md i ert repository.
+I den här projekt använder vi `Trello` för hantera arbetsuppgifter och i Trello finns flera columner för organisera uppgifter - t.ex. `Backlog`, `In progress`, `Review`, `Done`, `Fix`. Sedan lista man alla features som man behöver i produkten och ligger man i `Backlog`. När man har listat allting, varje person skulle välje en uppgift i tag som finns i Backlog och använda man "Change Members" för att visa vem som ta hand om den uppgift och lätta att fixa bugs(Den person som ta hand om den uppgift, skulle fixar dessa bugs som i sin uppgiften). Efter man är klart med sin uppgift, då ska man flytta den uppgift till `Review` för visa till annan person i gruppen, om det är godkänn då flytta den uppgift till `Done` annat fixa man till det ät godkänn.
 
 ## Instruktioner
 Ni ska bygga en FrontEnd till en färdig BackEnd. Se `SINUS Webshop - REST API` nedan för mer information.
