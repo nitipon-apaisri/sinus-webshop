@@ -1,5 +1,5 @@
 <template>
-  <section class="products primary-section-style">
+  <section class="products">
     <h1>PRODUCTS</h1>
     <ul>
       <li v-for="(product, index) in products" :key="index">

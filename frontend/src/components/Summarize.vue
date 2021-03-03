@@ -79,31 +79,51 @@
             <div class="address-info">
               <div class="name">
                 <label for="name">Name</label>
-                <input type="text" disabled v-model="mokcUser.name" />
+                <input type="text" disabled v-model="getMockUserContact.name" />
               </div>
               <div class="address-post">
                 <div class="address">
                   <label for="address">Address</label>
-                  <input type="text" disabled v-model="mokcUser.address" />
+                  <input
+                    type="text"
+                    disabled
+                    v-model="getMockUserContact.address"
+                  />
                 </div>
                 <div class="post">
                   <label for="post">Post</label>
-                  <input type="text" disabled v-model="mokcUser.post" />
+                  <input
+                    type="text"
+                    disabled
+                    v-model="getMockUserContact.post"
+                  />
                 </div>
               </div>
               <div class="city-phone">
                 <div class="city">
                   <label for="city">City</label>
-                  <input type="text" disabled v-model="mokcUser.city" />
+                  <input
+                    type="text"
+                    disabled
+                    v-model="getMockUserContact.city"
+                  />
                 </div>
                 <div class="phone">
                   <label for="phone">Phone</label>
-                  <input type="text" disabled v-model="mokcUser.phone" />
+                  <input
+                    type="text"
+                    disabled
+                    v-model="getMockUserContact.phone"
+                  />
                 </div>
               </div>
               <div class="country">
                 <label for="phone">Country</label>
-                <input type="text" disabled v-model="mokcUser.country" />
+                <input
+                  type="text"
+                  disabled
+                  v-model="getMockUserContact.country"
+                />
               </div>
             </div>
           </div>
@@ -130,26 +150,43 @@
               <div class="card-info">
                 <div class="card-name">
                   <label for="cardname">Cardholder name</label>
-                  <input type="text" disabled v-model="mokcUser.name" />
+                  <input
+                    type="text"
+                    disabled
+                    v-model="getMockUserContact.name"
+                  />
                 </div>
                 <div class="card-sec">
                   <div class="card-no">
                     <label for="cardno">Card Number</label>
-                    <input type="text" disabled v-model="mokcUser.cardNo" />
+                    <input
+                      type="text"
+                      disabled
+                      v-model="getMockUserContact.cardNo"
+                    />
                   </div>
                   <div class="card-exp">
                     <label for="cardno">Expire</label>
-                    <input type="text" disabled v-model="mokcUser.exp" />
+                    <input
+                      type="text"
+                      disabled
+                      v-model="getMockUserContact.exp"
+                    />
                   </div>
                   <div class="card-cvc">
                     <label for="cardcvc">CVC</label>
-                    <input type="text" disabled v-model="mokcUser.CVC" />
+                    <input
+                      type="text"
+                      disabled
+                      v-model="getMockUserContact.CVC"
+                    />
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
         <hr />
         <div class="summarize-footer">
           <div class="footer-content">
@@ -182,11 +219,11 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from "vuex";
+import { mapGetters } from "vuex";
 export default {
   computed: {
     ...mapGetters("order", ["order", "cartStatus", "totalCost"]),
-    ...mapState(["mokcUser"]),
+    ...mapGetters(["getMockUserContact"]),
   },
   methods: {
     confirm() {

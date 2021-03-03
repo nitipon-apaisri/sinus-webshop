@@ -69,6 +69,27 @@
    border-radius: 20px;
    text-align: left;
 }
+.default-card-info {
+   margin: 16px 0 0 0;
+   .card-name {
+      @extend .input-info;
+   }
+   .card-sec {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-gap: 32px;
+      margin: 6px 0 0 0;
+      .card-no {
+         grid-column: span 6;
+         @extend .input-info;
+      }
+      .card-exp,
+      .card-cvc {
+         grid-column: span 3;
+         @extend .input-info;
+      }
+   }
+}
 .cost-default {
    margin: 0 0 0 8px;
    width: 100%;
@@ -162,6 +183,9 @@
                         max-height: 24px;
                      }
                   }
+               }
+               .card-info {
+                  @extend .default-card-info;
                }
                .digital-wallet {
                   width: 46%;
