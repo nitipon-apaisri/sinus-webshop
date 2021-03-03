@@ -70,7 +70,7 @@
           </div>
         </div>
         <hr />
-
+        <form></form>
         <div class="shipping-contents">
           <div class="address-content">
             <div class="address-header">
@@ -162,7 +162,7 @@
                     <input
                       type="text"
                       disabled
-                      v-model="getMockUserContact.cardNo"
+                      v-model="getMockCreditCard.cardNumber"
                     />
                   </div>
                   <div class="card-exp">
@@ -170,7 +170,7 @@
                     <input
                       type="text"
                       disabled
-                      v-model="getMockUserContact.exp"
+                      v-model="getMockCreditCard.cardValit"
                     />
                   </div>
                   <div class="card-cvc">
@@ -178,7 +178,7 @@
                     <input
                       type="text"
                       disabled
-                      v-model="getMockUserContact.CVC"
+                      v-model="getMockCreditCard.cvc"
                     />
                   </div>
                 </div>
@@ -223,7 +223,7 @@ import { mapGetters } from "vuex";
 export default {
   computed: {
     ...mapGetters("order", ["order", "cartStatus", "totalCost"]),
-    ...mapGetters(["getMockUserContact"]),
+    ...mapGetters(["getMockUserContact", "getMockCreditCard"]),
   },
   methods: {
     confirm() {
