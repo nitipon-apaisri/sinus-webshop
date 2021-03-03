@@ -433,124 +433,8 @@ main {
    }
    //-------------------------------------------------------------------------------
    .payment-container {
-      .payment-header {
-         text-transform: uppercase;
-         margin: 0 auto;
-         display: flex;
-         flex-direction: row;
-         width: fit-content;
-         .current-step {
-            width: fit-content;
-            display: flex;
-         }
-         hr {
-            align-self: center;
-            width: 50px;
-            margin: 0 16px;
-         }
-         .next-step {
-            display: flex;
-            color: #bdbdbd;
-         }
-      }
-      .payment-info {
-         text-align: left;
-         display: grid;
-         grid-template-columns: repeat(12, 1fr);
-         margin: 16px 0 0 0;
-         input {
-            margin: 6px 0;
-            padding: 8px 16px;
-            border-radius: 4px;
-            border: 1px solid #f2f2f2;
-         }
-         label {
-            font-size: 0.7rem;
-         }
-         .address-content {
-            grid-column-start: 1;
-            grid-column-end: 6;
-            .address-info {
-               margin: 16px 0 0 0;
-               .name {
-                  @extend .input-info;
-               }
-               .address-post {
-                  @extend .address-contents-default;
-                  @extend .default-grid;
-                  .address {
-                     @extend .input-info;
-                     grid-column: span 8;
-                  }
-                  .post {
-                     @extend .input-info;
-                     grid-column: span 4;
-                  }
-               }
-               .city-phone {
-                  @extend .address-contents-default;
-                  @extend .default-grid;
-                  .city {
-                     @extend .input-info;
-                     grid-column: span 6;
-                  }
-                  .phone {
-                     @extend .input-info;
-                     grid-column: span 6;
-                  }
-               }
-               .country {
-                  @extend .address-contents-default;
-                  @extend .input-info;
-               }
-            }
-         }
-         .method-info {
-            grid-column-start: 8;
-            grid-column-end: 13;
-            .choice-method {
-               margin: 16px 0 0 0;
-               .credit-card {
-                  width: 50%;
-                  @extend .choice-default;
-                  .icons {
-                     img {
-                        max-width: 34px;
-                        max-height: 24px;
-                     }
-                  }
-               }
-               .digital-wallet {
-                  width: 46%;
-                  margin: 16px 0 0 0;
-                  @extend .choice-default;
-               }
-               .internet {
-                  width: 33%;
-                  margin: 16px 0 0 0;
-                  @extend .choice-default;
-               }
-            }
-         }
-      }
-      .nextButt {
-         display: flex;
-         padding: 8px 16px;
-         border: 1px solid transparent;
-         border-radius: 8px;
-         background-color: #00a79d;
-         color: $primary-light-color;
-         margin: 0 0 0 auto;
-         cursor: pointer;
-         h3 {
-            letter-spacing: 0.03rem;
-            align-self: center;
-         }
-         svg {
-            align-self: center;
-            margin: 0 0 0 12px;
-         }
-      }
+      @extend .default-contents-container;
+      @extend .payment-and-shipping;
    }
    .summarize-container {
       @extend .default-contents-container;
@@ -969,123 +853,11 @@ main {
       }
    }
    //-------------------------------------------------------------------------------
-   .payment-container {
-      box-sizing: border-box;
-      max-width: 1440px;
-      margin: 100px auto;
-      background-color: $primary-light-color;
-      border-radius: 20px;
-      padding: 50px;
-      .payment-header {
-         text-transform: uppercase;
-
-         width: fit-content;
-         .current-step {
-            width: fit-content;
-            display: flex;
-         }
-         hr {
-            align-self: center;
-            width: 50px;
-            margin: 0 16px;
-         }
-         .next-step {
-            display: flex;
-            color: #bdbdbd;
-         }
-      }
-      .payment-info {
-         display: grid;
-         grid-template-columns: repeat(12, 1fr);
-         margin: 50px 0 0 0;
-         input {
-            margin: 6px 0;
-            padding: 8px 16px;
-            border-radius: 4px;
-            border: 1px solid #f2f2f2;
-         }
-         label {
-            font-size: 0.7rem;
-         }
-         .address-content {
-            grid-column-start: 1;
-            grid-column-end: 6;
-            .address-info {
-               margin: 16px 0 0 0;
-               .name {
-                  @extend .input-info;
-               }
-               .address-post {
-                  @extend .address-contents-default;
-                  @extend .default-grid;
-                  .address {
-                     @extend .input-info;
-                     grid-column: span 8;
-                  }
-                  .post {
-                     @extend .input-info;
-                     grid-column: span 4;
-                  }
-               }
-               .city-phone {
-                  @extend .address-contents-default;
-                  @extend .default-grid;
-                  .city {
-                     @extend .input-info;
-                     grid-column: span 6;
-                  }
-                  .phone {
-                     @extend .input-info;
-                     grid-column: span 6;
-                  }
-               }
-               .country {
-                  @extend .address-contents-default;
-                  @extend .input-info;
-               }
-            }
-         }
-         .method-info {
-            grid-column-start: 8;
-            grid-column-end: 13;
-            .choice-method {
-               margin: 16px 0 0 0;
-               .credit-card {
-                  width: 50%;
-                  @extend .choice-default;
-               }
-               .digital-wallet {
-                  width: 46%;
-                  margin: 16px 0 0 0;
-                  @extend .choice-default;
-               }
-               .internet {
-                  width: 33%;
-                  margin: 16px 0 0 0;
-                  @extend .choice-default;
-               }
-            }
-         }
-      }
-      .nextButt {
-         display: flex;
-         padding: 8px 16px;
-         border: 1px solid transparent;
-         border-radius: 8px;
-         background-color: #00a79d;
-         color: $primary-light-color;
-         margin: 0 0 0 auto;
-         cursor: pointer;
-         h3 {
-            letter-spacing: 0.03rem;
-            align-self: center;
-         }
-         svg {
-            align-self: center;
-            margin: 0 0 0 12px;
-         }
-      }
+   .delivery-container {
+      @extend .default-contents-container;
+      @extend .payment-and-shipping;
    }
+   //-------------------------------------------------------------------------------
    .summarize-container {
       max-width: 1440px;
       margin: 50px auto;
@@ -1294,6 +1066,12 @@ main {
             padding: 0;
             li {
                list-style: none;
+               h3 {
+                  color: $tertiary-light-color;
+               }
+               h4 {
+                  text-align: right;
+               }
                .order-item {
                   @extend .content-box;
                   ul {
@@ -1325,14 +1103,14 @@ main {
                            }
                            .product-info {
                               margin: 15px 0;
+                              h4,
+                              h5 {
+                                 text-align: left;
+                                 letter-spacing: 0.025rem;
+                                 text-transform: uppercase;
+                              }
                               .product-title {
                                  width: 100%;
-                                 display: flex;
-                                 justify-content: space-between;
-                                 h4 {
-                                    letter-spacing: 0.025rem;
-                                    text-transform: uppercase;
-                                 }
                                  p {
                                     text-transform: capitalize;
                                     color: #a5a5a5;
@@ -1344,17 +1122,6 @@ main {
                                  color: $secondary-strong-header;
                                  display: flex;
                                  justify-content: space-between;
-                                 button {
-                                    border: 1px solid transparent;
-                                    font-size: 1rem;
-                                    border-radius: 8px;
-                                    padding: 8px 10px;
-                                    background-color: #ececec;
-                                 }
-                                 h5 {
-                                    letter-spacing: 0.025rem;
-                                    align-self: center;
-                                 }
                               }
                            }
                         }

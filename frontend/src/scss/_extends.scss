@@ -1,16 +1,6 @@
+@import "_variables";
 .content-box {
    margin: 24px 0;
-}
-.primary-section-style {
-   width: 100%;
-   box-sizing: border-box;
-   background-color: #fff;
-   padding: 30px 40px;
-   border-radius: 20px;
-   text-align: left;
-   h1 {
-      letter-spacing: 0.09rem;
-   }
 }
 .default-button {
    padding: 6px 18px;
@@ -38,6 +28,9 @@
    display: flex;
    justify-content: space-between;
    input {
+      align-self: center;
+   }
+   h3 {
       align-self: center;
    }
    .icons {
@@ -75,4 +68,151 @@
    padding: 30px 40px;
    border-radius: 20px;
    text-align: left;
+}
+.cost-default {
+   margin: 0 0 0 8px;
+   width: 100%;
+   @extend .choice-default;
+}
+.payment-and-shipping {
+   .header {
+      text-transform: uppercase;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: row;
+      width: fit-content;
+      .current-step {
+         width: fit-content;
+         display: flex;
+      }
+      hr {
+         align-self: center;
+         width: 50px;
+         margin: 0 16px;
+      }
+      .next-step {
+         display: flex;
+         color: #bdbdbd;
+      }
+   }
+   form {
+      .info {
+         text-align: left;
+         grid-template-columns: repeat(12, 1fr);
+         display: grid;
+         margin: 32px 0 0 0;
+         input {
+            margin: 6px 0;
+            padding: 8px 16px;
+            border-radius: 4px;
+            border: 1px solid #f2f2f2;
+         }
+         label {
+            font-size: 0.7rem;
+         }
+         .address-content {
+            grid-column-start: 1;
+            grid-column-end: 6;
+            .address-info {
+               margin: 16px 0 0 0;
+               .name {
+                  @extend .input-info;
+               }
+               .address-post {
+                  @extend .address-contents-default;
+                  @extend .default-grid;
+                  .address {
+                     @extend .input-info;
+                     grid-column: span 8;
+                  }
+                  .post {
+                     @extend .input-info;
+                     grid-column: span 4;
+                  }
+               }
+               .city-phone {
+                  @extend .address-contents-default;
+                  @extend .default-grid;
+                  .city {
+                     @extend .input-info;
+                     grid-column: span 6;
+                  }
+                  .phone {
+                     @extend .input-info;
+                     grid-column: span 6;
+                  }
+               }
+               .country {
+                  @extend .address-contents-default;
+                  @extend .input-info;
+               }
+            }
+         }
+         .method-info {
+            grid-column-start: 8;
+            grid-column-end: 13;
+            .choice-method {
+               margin: 16px 0 0 0;
+               .credit-card {
+                  width: 50%;
+                  @extend .choice-default;
+                  .icons {
+                     img {
+                        max-width: 34px;
+                        max-height: 24px;
+                     }
+                  }
+               }
+               .digital-wallet {
+                  width: 46%;
+                  margin: 16px 0 0 0;
+                  @extend .choice-default;
+               }
+               .internet {
+                  width: 33%;
+                  margin: 16px 0 0 0;
+                  @extend .choice-default;
+               }
+               .standard-config {
+                  margin: 0 0 16px 0;
+                  width: 100%;
+                  display: flex;
+                  input {
+                     align-self: center;
+                  }
+                  .cost {
+                     @extend .cost-default;
+                  }
+               }
+               .postnord {
+                  @extend .standard-config;
+               }
+               .ups-standard {
+                  @extend .standard-config;
+               }
+               .dhl {
+                  @extend .standard-config;
+               }
+            }
+         }
+      }
+      .nextButt {
+         display: flex;
+         padding: 8px 16px;
+         border: 1px solid transparent;
+         border-radius: 8px;
+         background-color: #00a79d;
+         color: $primary-light-color;
+         margin: 0 0 0 auto;
+         cursor: pointer;
+         h3 {
+            letter-spacing: 0.03rem;
+            align-self: center;
+         }
+         svg {
+            align-self: center;
+            margin: 0 0 0 12px;
+         }
+      }
+   }
 }

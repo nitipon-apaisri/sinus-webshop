@@ -1,7 +1,7 @@
 <template>
-  <div class="payment-container">
-    <div class="payment-contents">
-      <div class="payment-header">
+  <div class="delivery-container">
+    <div class="delivery-contents">
+      <div class="header">
         <div class="current-step">
           <h4 class="checkout-step">shopping cart</h4>
           <hr />
@@ -16,88 +16,115 @@
           <h4>done</h4>
         </div>
       </div>
-      <div class="payment-info">
-        <div class="address-content">
-          <div class="address-header">
-            <h2>DELIVERY ADDRESS</h2>
+      <form @submit.prevent="delivery">
+        <div class="info">
+          <div class="address-content">
+            <div class="address-header">
+              <h2>DELIVERY ADDRESS</h2>
+            </div>
+            <div class="address-info">
+              <div class="name">
+                <label for="name">Name</label>
+                <input type="text" v-model="deliveryInfo.name" />
+              </div>
+              <div class="address-post">
+                <div class="address">
+                  <label for="address">Address</label>
+                  <input type="text" v-model="deliveryInfo.address" />
+                </div>
+                <div class="post">
+                  <label for="post">Post</label>
+                  <input type="text" v-model="deliveryInfo.post" />
+                </div>
+              </div>
+              <div class="city-phone">
+                <div class="city">
+                  <label for="city">City</label>
+                  <input type="text" v-model="deliveryInfo.city" />
+                </div>
+                <div class="phone">
+                  <label for="phone">Phone</label>
+                  <input type="text" v-model="deliveryInfo.phone" />
+                </div>
+              </div>
+              <div class="country">
+                <label for="phone">Country</label>
+                <input type="text" v-model="deliveryInfo.country" />
+              </div>
+            </div>
           </div>
-          <div class="address-info">
-            <div class="name">
-              <label for="name">Name</label>
-              <input type="text" />
-            </div>
-            <div class="address-post">
-              <div class="address">
-                <label for="address">Address</label>
-                <input type="text" />
+          <div class="method-info">
+            <div class="method-content">
+              <div class="method-header">
+                <h2>DELIVERY METHOD</h2>
               </div>
-              <div class="post">
-                <label for="post">Post</label>
-                <input type="text" />
+              <div class="choice-method">
+                <div class="postnord">
+                  <input type="checkbox" name="postnord" />
+                  <div class="cost">
+                    <h3>POSTNORD</h3>
+                    <div class="icons">
+                      <img
+                        src="../assets/brands/postnord.svg"
+                        alt="brand-icon"
+                      />
+                    </div>
+                    <h3>+79 SEK</h3>
+                  </div>
+                </div>
+                <div class="ups-standard">
+                  <input type="checkbox" name="ups" />
+                  <div class="cost">
+                    <h3>UPS STANDARD</h3>
+                    <div class="icons">
+                      <img src="../assets/brands/ups.svg" alt="brand-icon" />
+                    </div>
+                    <h3>+119 SEK</h3>
+                  </div>
+                </div>
+                <div class="dhl">
+                  <input type="checkbox" name="dhl" />
+                  <div class="cost">
+                    <h3>DHL - EXPRESS</h3>
+                    <div class="icons">
+                      <img
+                        src="../assets/brands/dhl-exp.svg"
+                        alt="brand-icon"
+                      />
+                    </div>
+                    <h3>+199 SEK</h3>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="city-phone">
-              <div class="city">
-                <label for="city">City</label>
-                <input type="text" />
-              </div>
-              <div class="phone">
-                <label for="phone">Phone</label>
-                <input type="text" />
-              </div>
-            </div>
-            <div class="country">
-              <label for="phone">Country</label>
-              <input type="text" />
             </div>
           </div>
         </div>
-        <div class="method-info">
-          <div class="method-content">
-            <div class="method-header">
-              <h2>PAYMENT METHOD</h2>
-            </div>
-            <div class="choice-method">
-              <div class="credit-card">
-                <input type="checkbox" name="credit" />
-                <h3>CREDIT CARD</h3>
-                <div class="icons">
-                  <img src="../assets/brands/master.svg" alt="brand-icon" />
-                  <img src="../assets/brands/visa.svg" alt="brand-icon" />
-                  <img src="../assets/brands/amex.svg" alt="brand-icon" />
-                </div>
-              </div>
-              <div class="digital-wallet">
-                <input type="checkbox" name="credit" />
-                <h3>DIGITAL WALLET</h3>
-                <div class="icons">
-                  <img src="../assets/brands/google.svg" alt="brand-icon" />
-                  <img src="../assets/brands/apple.svg" alt="brand-icon" />
-                </div>
-              </div>
-              <div class="internet">
-                <input type="checkbox" name="credit" />
-                <h3>3RD PARTY</h3>
-                <div class="icons">
-                  <img src="../assets/brands/paypal.svg" alt="brand-icon" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        <button class="nextButt">
+          <h3>CONTINUE</h3>
+          <font-awesome-icon :icon="['fas', 'caret-square-right']" size="2x" />
+        </button>
+      </form>
     </div>
-    <button @click="toPayment" class="nextButt">
-      <h3>CONTINUE</h3>
-      <font-awesome-icon :icon="['fas', 'caret-square-right']" size="2x" />
-    </button>
   </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      deliveryInfo: {
+        name: "",
+        address: "",
+        post: "",
+        city: "",
+        country: "",
+        phone: "",
+      },
+    };
+  },
   methods: {
-    toPayment() {
+    delivery() {
+      this.$store.dispatch("postAddress", this.deliveryInfo);
       this.$router.push("/payment");
     },
   },
