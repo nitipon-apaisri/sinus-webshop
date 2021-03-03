@@ -80,12 +80,32 @@
               </div>
               <div class="choice-method">
                 <div class="credit-card">
-                  <input type="checkbox" name="credit" />
+                  <input type="checkbox" name="credit" v-model="creditInfo" />
                   <h3>CREDIT CARD</h3>
                   <div class="icons">
                     <img src="../assets/brands/master.svg" alt="brand-icon" />
                     <img src="../assets/brands/visa.svg" alt="brand-icon" />
                     <img src="../assets/brands/amex.svg" alt="brand-icon" />
+                  </div>
+                </div>
+                <div class="card-info" v-if="creditInfo">
+                  <div class="card-name">
+                    <label for="cardname">Cardholder name</label>
+                    <input type="text" v-model="cardInfo.name" />
+                  </div>
+                  <div class="card-sec">
+                    <div class="card-no">
+                      <label for="cardno">Card Number</label>
+                      <input type="text" v-model="cardInfo.number" />
+                    </div>
+                    <div class="card-exp">
+                      <label for="cardno">Expire</label>
+                      <input type="text" v-model="cardInfo.valid" />
+                    </div>
+                    <div class="card-cvc">
+                      <label for="cardcvc">CVC</label>
+                      <input type="text" v-model="cardInfo.cvc" />
+                    </div>
                   </div>
                 </div>
                 <div class="digital-wallet">
@@ -119,13 +139,35 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
+  data() {
+    return {
+      creditInfo: false,
+      cardInfo: {
+        name: "",
+        number: "",
+        valid: "",
+        cvc: "",
+      },
+    };
+  },
+  beforeMount() {
+    if (sessionStorage.getItem("user") !== null) {
+      this.cardInfo.name = this.getMockUserContact.name;
+      this.cardInfo.number = this.getMockCreditCard.cardNumber;
+      this.cardInfo.valid = this.getMockCreditCard.cardValit;
+    } else {
+      console.log("No user");
+    }
+  },
   methods: {
     toSum() {
-      this.$router.push("/summarize");
+      console.log(this.creditInfo);
+      console.log(this.cardInfo.name);
+      // this.$router.push("/summarize");
     },
   },
   computed: {
-    ...mapGetters(["getMockUserContact"]),
+    ...mapGetters(["getMockUserContact", "getMockCreditCard"]),
   },
 };
 </script>

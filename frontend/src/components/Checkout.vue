@@ -1,5 +1,5 @@
 <template>
-  <div class="checkout-container primary-section-style">
+  <div class="checkout-container">
     <div class="cartStatus" v-if="cartStatus">Cart is emty...</div>
     <div class="checkout-contents" v-else>
       <div class="checkout-header">

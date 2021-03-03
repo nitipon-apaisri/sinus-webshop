@@ -1,5 +1,5 @@
 <template>
-  <section class="about primary-section-style">
+  <section class="about">
     <h1>ABOUT</h1>
     <p>
       semper quis lectus nulla at volutpat diam ut venenatis tellus in metus

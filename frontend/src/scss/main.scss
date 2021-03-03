@@ -49,6 +49,7 @@ main {
          }
       }
       .brands {
+         @extend .default-contents-container;
          .brands-logo {
             margin: 16px 0 0 0;
             display: grid;
@@ -74,6 +75,7 @@ main {
          }
       }
       .products {
+         @extend .default-contents-container;
          @extend .content-box;
          ul {
             padding: 0;
@@ -138,6 +140,7 @@ main {
          }
       }
       .shop-extra-info {
+         @extend .default-contents-container;
          grid-auto-flow: row;
          @extend .default-grid;
          .about {
@@ -305,7 +308,8 @@ main {
    }
    //-------------------------------------------------------------------------------
    .checkout-container {
-      margin: 130px 0;
+      @extend .default-contents-container;
+      margin: 0 0 210px 0;
       .checkout-contents {
          .checkout-header {
             @extend .checkout-header;
@@ -435,6 +439,7 @@ main {
    .payment-container {
       @extend .default-contents-container;
       @extend .payment-and-shipping;
+      margin: 0 0 150px 0;
    }
    .summarize-container {
       @extend .default-contents-container;
@@ -856,6 +861,7 @@ main {
    .delivery-container {
       @extend .default-contents-container;
       @extend .payment-and-shipping;
+      margin: 0 0 200px 0;
    }
    //-------------------------------------------------------------------------------
    .summarize-container {
@@ -1004,25 +1010,7 @@ main {
                      width: 50%;
                   }
                   .card-info {
-                     margin: 16px 0 0 0;
-                     .card-name {
-                        @extend .input-info;
-                     }
-                     .card-sec {
-                        display: grid;
-                        grid-template-columns: repeat(12, 1fr);
-                        grid-gap: 32px;
-                        margin: 6px 0 0 0;
-                        .card-no {
-                           grid-column: span 6;
-                           @extend .input-info;
-                        }
-                        .card-exp,
-                        .card-cvc {
-                           grid-column: span 3;
-                           @extend .input-info;
-                        }
-                     }
+                     @extend .default-card-info;
                   }
                }
             }

@@ -1,5 +1,5 @@
 <template>
-  <section class="brands primary-section-style">
+  <section class="brands">
     <h1>BRANDS</h1>
     <div class="brands-logo">
       <div class="logo">

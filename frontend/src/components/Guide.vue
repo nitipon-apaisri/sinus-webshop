@@ -1,5 +1,5 @@
 <template>
-  <section class="guide primary-section-style">
+  <section class="guide">
     <h1>GUIDES</h1>
     <div class="contents">
       <div class="guide-content">

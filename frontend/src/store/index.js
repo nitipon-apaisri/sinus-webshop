@@ -10,11 +10,16 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
    state: {
-      mokcUserContact: {},
+      mockUserContact: {},
+      mockCreditCard: {
+         cardNumber: "1234 5678 9101 1121",
+         cardValit: "10 / 25",
+         cvc: "XXX",
+      },
    },
    mutations: {
       postAddress(state, info) {
-         state.mokcUserContact = info;
+         state.mockUserContact = info;
       },
    },
    actions: {
@@ -31,7 +36,10 @@ export default new Vuex.Store({
    },
    getters: {
       getMockUserContact(state) {
-         return state.mokcUserContact;
+         return state.mockUserContact;
+      },
+      getMockCreditCard(state) {
+         return state.mockCreditCard;
       },
    },
 });
