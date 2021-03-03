@@ -1,5 +1,5 @@
 <template>
-  <div class="account-info">
+  <div class="account-infomo">
     <article>
       <h1>Account</h1>
       <div class="loader" v-if="loading">Loding</div>
@@ -33,7 +33,10 @@
               <div class="email">
                 <h2>E-mail: {{ getUser.email }}</h2>
               </div>
-              <button @click="out">Sign out</button>
+              <button @click="out" class="log-out">
+                <h3>SIGN OUT</h3>
+                <font-awesome-icon :icon="['fa', 'sign-out-alt']" size="2x" />
+              </button>
             </div>
           </div>
         </div>

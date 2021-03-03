@@ -687,7 +687,7 @@ main {
       }
    }
    //-------------------------------------------------------------------------------
-   .account-info {
+   .account-infomo {
       article {
          width: 100%;
          box-sizing: border-box;
@@ -744,6 +744,19 @@ main {
             }
             .sign-in-info {
                margin: 32px 0;
+               .log-out {
+                  display: flex;
+                  margin: 16px 0 0 0;
+                  border-radius: 4px;
+                  border: 1px solid transparent;
+                  padding: 12px 20px;
+                  color: #fff;
+                  background-color: #ff304f;
+                  h3 {
+                     align-self: center;
+                     margin: 0 8px 0 0;
+                  }
+               }
             }
          }
       }
