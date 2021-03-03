@@ -33,6 +33,7 @@
               <div class="email">
                 <h2>E-mail: {{ getUser.email }}</h2>
               </div>
+              <button @click="out">Sign out</button>
             </div>
           </div>
         </div>
@@ -88,6 +89,15 @@ export default {
   beforeMount() {
     this.$store.dispatch("user/userData");
     this.$store.dispatch("order/getOrder");
+  },
+  methods: {
+    out() {
+      sessionStorage.removeItem("user");
+      setTimeout(() => {
+        this.$router.push("/");
+        location.reload();
+      }, 300);
+    },
   },
   computed: {
     ...mapGetters("user", ["getUser"]),
