@@ -39,10 +39,12 @@
       </div>
       <section class="user-order-container">
         <h1>Order History</h1>
+
         <hr />
         <div class="user-order-content">
           <ul>
             <li v-for="item in getUserOrder" :key="item._id">
+              <h3>ORDER ID: #{{ item._id }}</h3>
               <div class="order-item">
                 <ul>
                   <li v-for="item in item.items" :key="item._id">
@@ -58,12 +60,19 @@
                       <div class="product-info">
                         <div class="product-title">
                           <h4>{{ item.title }}</h4>
-                          <h4>Amount: {{ item.amount }}</h4>
+                        </div>
+                        <div class="product-footer">
+                          <h5>Amount: {{ item.amount }}</h5>
+                          <h5>{{ item.price }} SEK</h5>
                         </div>
                       </div>
                     </div>
                   </li>
                 </ul>
+                <hr />
+                <h4>TOTAL: {{ item.orderValue }} SEK</h4>
+                <hr />
+                <hr />
               </div>
             </li>
           </ul>

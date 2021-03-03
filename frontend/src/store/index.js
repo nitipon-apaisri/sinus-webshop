@@ -10,20 +10,18 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
    state: {
-      mokcUser: {
-         name: "Miyamoto Musashi",
-         address: "Fatburs Kvarngata 25",
-         post: "155 96",
-         city: "Solna",
-         phone: "0727456465",
-         country: "Sweden",
-         cardNo: "1324 5678 9100 5566",
-         exp: "10 / 25",
-         CVC: "557",
+      mokcUserContact: {},
+   },
+   mutations: {
+      postAddress(state, info) {
+         state.mokcUserContact = info;
       },
    },
-   mutations: {},
-   actions: {},
+   actions: {
+      postAddress({ commit }, info) {
+         commit("postAddress", info);
+      },
+   },
    modules: {
       auth,
       products,
@@ -32,8 +30,8 @@ export default new Vuex.Store({
       register,
    },
    getters: {
-      getMockUser(state) {
-         return state.mokcUser;
+      getMockUserContact(state) {
+         return state.mokcUserContact;
       },
    },
 });
