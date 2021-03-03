@@ -61,7 +61,7 @@
                       <h3>{{ item.amount }}X</h3>
                       <font-awesome-icon
                         :icon="['fas', 'times']"
-                        size="2x"
+                        size="lg"
                         @click="decreaseAmount(index)"
                       />
                     </div>
