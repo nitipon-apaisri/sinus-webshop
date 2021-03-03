@@ -163,7 +163,7 @@ export default {
     toSum() {
       console.log(this.creditInfo);
       console.log(this.cardInfo.name);
-      // this.$router.push("/summarize");
+      this.$router.push("/summarize");
     },
   },
   computed: {

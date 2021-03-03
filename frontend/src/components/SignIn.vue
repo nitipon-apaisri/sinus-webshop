@@ -12,6 +12,7 @@
             placeholder="password"
             v-model="password"
           />
+          <p v-if="err" class="err">E-mail or Password is not correct</p>
           <router-link to="/register">No Account ?</router-link>
           <button>Log in</button>
         </form>
@@ -31,9 +32,11 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
+      err: false,
       email: "customer@example.com",
       password: "password",
     };
@@ -46,13 +49,24 @@ export default {
       };
       this.$store.dispatch("auth/submitUser", payload);
       setTimeout(() => {
-        this.$router.push("/");
-        location.reload();
+        if (this.getErr !== "Err") {
+          this.err = false;
+          this.$router.push("/");
+          location.reload();
+        } else {
+          this.err = true;
+        }
       }, 300);
     },
+  },
+  computed: {
+    ...mapGetters("auth", ["getErr"]),
   },
 };
 </script>
 
 <style lang="scss" scoped>
+.err {
+  color: red;
+}
 </style>

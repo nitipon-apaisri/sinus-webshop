@@ -1,17 +1,32 @@
 import api from "../../api/api";
 export default {
    namespaced: true,
-   state: {},
+   state: {
+      status: "",
+   },
    mutations: {
       submitUser(state, tokenValue) {
+         state.status = "";
          sessionStorage.setItem("user", tokenValue);
+      },
+      gotErr(state) {
+         state.status = "Err";
       },
    },
    actions: {
       async submitUser({ commit }, payload) {
-         const responData = await api.post("/auth", payload);
-         console.log("User logged in and token is set");
-         commit("submitUser", responData.data.token);
+         await api
+            .post("/auth", payload)
+            .then((res) => {
+               commit("submitUser", res.data.token);
+               console.log("User logged in and token is set");
+            })
+            .catch((err) => commit("gotErr", err));
+      },
+   },
+   getters: {
+      getErr(state) {
+         return state.status;
       },
    },
 };

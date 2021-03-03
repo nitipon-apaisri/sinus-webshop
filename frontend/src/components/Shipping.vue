@@ -33,8 +33,8 @@
                   <input type="text" v-model="deliveryInfo.address" />
                 </div>
                 <div class="post">
-                  <label for="post">Post</label>
-                  <input type="text" v-model="deliveryInfo.post" />
+                  <label for="zip">Post</label>
+                  <input type="text" name="zip" v-model="deliveryInfo.post" />
                 </div>
               </div>
               <div class="city-phone">
