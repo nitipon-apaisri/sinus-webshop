@@ -81,9 +81,6 @@
           </ul>
         </div>
       </section>
-      <section class="admin-container" v-if="admin">
-        <h1>Admin</h1>
-      </section>
     </article>
   </div>
 </template>
@@ -91,15 +88,9 @@
 <script>
 import { mapGetters, mapState } from "vuex";
 export default {
-  data() {
-    return {
-      admin: false,
-    };
-  },
   beforeMount() {
     this.$store.dispatch("user/userData");
     this.$store.dispatch("order/getOrder");
-    console.log(this.getUser);
   },
   methods: {
     out() {
