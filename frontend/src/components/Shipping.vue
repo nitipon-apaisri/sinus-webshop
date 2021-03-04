@@ -127,7 +127,7 @@ export default {
     if (this.userStatus !== false) {
       this.deliveryInfo.name = this.getUser.name;
       this.deliveryInfo.address = this.getUser.address.street;
-      this.deliveryInfo.post = this.getUser.address.post;
+      this.deliveryInfo.post = this.getUser.address.zip;
       this.deliveryInfo.city = this.getUser.address.city;
     }
   },
