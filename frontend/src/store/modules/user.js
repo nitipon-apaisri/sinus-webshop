@@ -6,6 +6,7 @@ export default {
    state: {
       loading: null,
       user: {},
+      userStatus: false,
    },
    mutations: {
       setLoader(state, value) {
@@ -13,6 +14,7 @@ export default {
       },
       checkUser(state, userInfo) {
          state.user = userInfo;
+         state.userStatus = true;
       },
    },
    actions: {

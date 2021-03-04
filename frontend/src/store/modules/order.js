@@ -34,7 +34,7 @@ export default {
          if (state.preOrder.items.length !== 1) {
             state.preOrder.items.splice(index, 1);
          } else {
-            state.cartStatus = true;
+            location.reload();
          }
          console.log(state.preOrder.items.length);
       },

@@ -24,6 +24,7 @@ import Navigation from "@/components/Navigation.vue";
 import About from "@/components/About";
 import Guide from "../components/Guide.vue";
 import Footer from "../components/Footer.vue";
+import { mapGetters, mapState } from "vuex";
 export default {
   components: {
     Hero,
@@ -34,9 +35,15 @@ export default {
     Guide,
     Footer,
   },
-
-  Footermethods: {},
-  computed: {},
+  mounted() {
+    if (sessionStorage.getItem("user") !== null) {
+      this.$store.dispatch("user/userData");
+    }
+  },
+  computed: {
+    ...mapGetters("user", ["getUser"]),
+    ...mapState("user", ["userStatus"]),
+  },
 };
 </script>
 <style lang="scss" scoped>
