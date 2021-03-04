@@ -1,7 +1,21 @@
 # SINUS Webshop
 
 ## Arbetssätt
-I den här projekt använder vi `Trello` för hantera arbetsuppgifter och i Trello finns flera columner för organisera uppgifter - t.ex. `Backlog`, `In progress`, `Review`, `Done`, `Fix`. Sedan lista man alla features som man behöver i produkten och ligger man i `Backlog`. När man har listat allting, varje person skulle välje en uppgift i tag som finns i Backlog och använda man "Change Members" för att visa vem som ta hand om den uppgift och lätta att fixa bugs(Den person som ta hand om den uppgift, skulle fixar dessa bugs som i sin uppgiften). Efter man är klart med sin uppgift, då ska man flytta den uppgift till `Review` för visa till annan person i gruppen, om det är godkänn då flytta den uppgift till `Done` annat fixa man till det ät godkänn.
+För att få ut det mesta av vårt arbete har vi valt att använda oss av metodiken Kanban. För att dokumentera, fördela och planera vårt arbete använder vi oss utav webbapplikationen Trello. Där försöker vi att visualiserar varje livscykel en uppgift jobbar sig igenom, detta gör vi med ett antal kolumner som representerar olika steg i processen. 
+
+Exempelvis så startar en "uppgift" i en Todo-lista, när den sedan har fördelats ut så hamnar den i "in progress". När en gruppmedlem känner sig färdig med uppgifter placeras den i "review". Vi som grupp går sedan igenom uppgiften och bedömmer om den uppfyller alla kriterier för att klassas som avklarad (definition of done). Har vi bedömt att den uppnår det flyttas den slutligen till kolumenen "done". 
+
+## Möten
+Varje dag inleds med ett team-möte. Här använder vi discord för kommunikation och Trello för planering.
+Vi har en stående dagordning som består av:
+ 1) Prata om gårddagen.
+ 2) Synka kod
+ 3) Gå igenom kod
+ 4) Planera dagen / Fördela uppgifter
+ 5) Planera in nästa möte
+
+
+##
 
 ## Instruktioner
 Ni ska bygga en FrontEnd till en färdig BackEnd. Se `SINUS Webshop - REST API` nedan för mer information.
