@@ -4,6 +4,7 @@ import Home from "../views/Home.vue";
 import Auth from "../views/Auth.vue";
 import Register from "../views/Register.vue";
 import User from "../views/User.vue";
+import Admin from "../views/Admin.vue";
 import Info from "../views/Info.vue";
 import Checkout from "../views/Checkout.vue";
 import Shipping from "../views/Shipping.vue";
@@ -36,6 +37,11 @@ const routes = [
       path: "/account",
       name: "User",
       component: User,
+   },
+   {
+      path: "/account/admin",
+      name: "Admin",
+      component: Admin,
    },
    {
       path: "/info/:id",

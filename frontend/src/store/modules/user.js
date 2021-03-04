@@ -5,7 +5,16 @@ export default {
    namespaced: true,
    state: {
       loading: null,
-      user: {},
+      user: {
+         name: "",
+         email: "",
+         role: "",
+         address: {
+            street: "",
+            city: "",
+            zip: "",
+         },
+      },
       userStatus: false,
    },
    mutations: {
@@ -13,7 +22,12 @@ export default {
          state.loading = value;
       },
       checkUser(state, userInfo) {
-         state.user = userInfo;
+         state.user.name = userInfo.name;
+         state.user.email = userInfo.email;
+         state.user.role = userInfo.role;
+         state.user.address.street = userInfo.address.street;
+         state.user.address.city = userInfo.address.city;
+         state.user.address.zip = userInfo.address.zip;
          state.userStatus = true;
       },
    },

@@ -2,6 +2,7 @@
 .content-box {
    margin: 24px 0;
 }
+//---------------------------------------------------------------------------
 .default-button {
    padding: 6px 18px;
    background-color: #000;
@@ -12,18 +13,22 @@
    font-size: 1rem;
    display: flex;
 }
+//---------------------------------------------------------------------------
 .default-grid {
    display: grid;
    grid-template-columns: repeat(12, 1fr);
    grid-gap: 32px;
 }
+//---------------------------------------------------------------------------
 .input-info {
    display: flex;
    flex-direction: column;
 }
+//---------------------------------------------------------------------------
 .address-contents-default {
    margin: 6px 0 0 0;
 }
+//---------------------------------------------------------------------------
 .choice-default {
    display: flex;
    justify-content: space-between;
@@ -60,6 +65,7 @@
       color: #bdbdbd;
    }
 }
+//---------------------------------------------------------------------------
 .default-contents-container {
    max-width: 1440px;
    margin: 50px auto;
@@ -69,6 +75,7 @@
    border-radius: 20px;
    text-align: left;
 }
+//---------------------------------------------------------------------------
 .default-card-info {
    margin: 16px 0 0 0;
    .card-name {
@@ -90,11 +97,13 @@
       }
    }
 }
+//---------------------------------------------------------------------------
 .cost-default {
    margin: 0 0 0 8px;
    width: 100%;
    @extend .choice-default;
 }
+//---------------------------------------------------------------------------
 .payment-and-shipping {
    .header {
       text-transform: uppercase;
@@ -240,3 +249,64 @@
       }
    }
 }
+//---------------------------------------------------------------------------
+.user-product-style {
+   @extend .content-box;
+   ul {
+      padding: 0;
+      display: grid;
+      grid-auto-flow: row;
+      grid-gap: 32px;
+      grid-template-columns: repeat(6, 1fr);
+      li {
+         list-style: none;
+         .the-product {
+            .product {
+               cursor: pointer;
+               box-sizing: border-box;
+               width: 200px;
+               height: 200px;
+               padding: 12px;
+               border-radius: 10px;
+               background-color: #f4f4f4;
+               display: flex;
+               justify-content: center;
+               .product-img {
+                  align-self: center;
+                  img {
+                     max-width: 230px;
+                     max-height: 115px;
+                  }
+               }
+            }
+            .product-info {
+               margin: 15px 0;
+               h4,
+               h5 {
+                  text-align: left;
+                  letter-spacing: 0.025rem;
+                  text-transform: uppercase;
+               }
+               .product-title {
+                  width: 100%;
+                  p {
+                     text-transform: capitalize;
+                     color: #a5a5a5;
+                     font-size: 0.8rem;
+                  }
+               }
+               .product-footer {
+                  margin: 16px 0 0 0;
+                  color: $secondary-strong-header;
+                  display: flex;
+                  justify-content: space-between;
+                  svg {
+                     cursor: pointer;
+                  }
+               }
+            }
+         }
+      }
+   }
+}
+//---------------------------------------------------------------------------

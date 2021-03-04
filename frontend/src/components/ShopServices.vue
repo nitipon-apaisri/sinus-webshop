@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapGetters, mapState } from "vuex";
 export default {
   data() {
     return {
@@ -28,7 +28,11 @@ export default {
   methods: {
     toProfile() {
       if (this.token !== null) {
-        this.$router.push("/account").catch((err) => err);
+        if (this.getUser.role === "admin") {
+          this.$router.push("/account/admin").catch((err) => err);
+        } else {
+          this.$router.push("/account").catch((err) => err);
+        }
       } else {
         this.$router.push("/auth");
       }
@@ -39,6 +43,7 @@ export default {
   },
   computed: {
     ...mapState("order", ["bagStatus"]),
+    ...mapGetters("user", ["getUser"]),
   },
 };
 </script>

@@ -43,7 +43,6 @@
       </div>
       <section class="user-order-container">
         <h1>Order History</h1>
-
         <hr />
         <div class="user-order-content">
           <ul>
