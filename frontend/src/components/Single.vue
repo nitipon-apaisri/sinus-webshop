@@ -118,6 +118,7 @@ export default {
   },
   computed: {
     ...mapGetters("products", ["product", "products"]),
+    ...mapGetters("user", ["getUser"]),
     ...mapState("products", ["loading"]),
   },
 };

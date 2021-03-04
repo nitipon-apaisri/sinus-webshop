@@ -109,6 +109,7 @@
 </template>
 
 <script>
+import { mapGetters, mapState } from "vuex";
 export default {
   data() {
     return {
@@ -122,11 +123,23 @@ export default {
       },
     };
   },
+  beforeMount() {
+    if (this.userStatus !== false) {
+      this.deliveryInfo.name = this.getUser.name;
+      this.deliveryInfo.address = this.getUser.address.street;
+      this.deliveryInfo.post = this.getUser.address.zip;
+      this.deliveryInfo.city = this.getUser.address.city;
+    }
+  },
   methods: {
     delivery() {
       this.$store.dispatch("postAddress", this.deliveryInfo);
       this.$router.push("/payment");
     },
+  },
+  computed: {
+    ...mapGetters("user", ["getUser"]),
+    ...mapState("user", ["userStatus"]),
   },
 };
 </script>

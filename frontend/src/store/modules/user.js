@@ -15,6 +15,7 @@ export default {
             zip: "",
          },
       },
+      userStatus: false,
    },
    mutations: {
       setLoader(state, value) {
@@ -27,6 +28,7 @@ export default {
          state.user.address.street = userInfo.address.street;
          state.user.address.city = userInfo.address.city;
          state.user.address.zip = userInfo.address.zip;
+         state.userStatus = true;
       },
    },
    actions: {
