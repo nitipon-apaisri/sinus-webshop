@@ -7,7 +7,14 @@
         <div class="account-info">
           <div class="mock-profile-img"></div>
           <div class="user-info">
-            <h1>Personal Infomation</h1>
+            <div class="info-header">
+              <h1>Personal Infomation</h1>
+              <font-awesome-icon
+                :icon="['fa', 'edit']"
+                size="2x"
+                @click="toggleEditAcc"
+              />
+            </div>
             <hr />
             <h2>{{ getUser.name }}</h2>
             <p class="role">{{ getUser.role }}</p>
@@ -41,12 +48,17 @@
           </div>
         </div>
       </div>
+      <EditUser
+        :user="this.user"
+        @editAcc="editAcc"
+        v-if="editAccModal"
+        @closeEditAcc="closeEditAcc"
+      />
       <section class="admin-container">
         <div class="maintenance-product">
           <div class="maintenance-products-header">
             <h1>Products</h1>
             <button @click="add">
-              <h2>NEW PRODUCT</h2>
               <font-awesome-icon :icon="['fas', 'plus']" size="lg" />
             </button>
           </div>
@@ -144,17 +156,29 @@
 
 <script>
 import EditModal from "./EditModal";
+import EditUser from "./EditUser";
 import AddModal from "./AddModal";
 import { mapGetters, mapState } from "vuex";
 export default {
   components: {
     EditModal,
     AddModal,
+    EditUser,
   },
   data() {
     return {
       editModal: false,
       addModal: false,
+      editAccModal: false,
+      user: {
+        name: "",
+        password: "",
+        address: {
+          street: "",
+          zip: "",
+          city: "",
+        },
+      },
       theProduct: {
         category: "",
         imgFile: "dgk-zen.png",
@@ -172,11 +196,30 @@ export default {
     }
     this.$store.dispatch("user/userData");
     this.$store.dispatch("order/getOrder");
+    setTimeout(() => {
+      this.user.name = this.getUser.name;
+      this.user.address.street = this.getUser.address.street;
+      this.user.address.city = this.getUser.address.city;
+      this.user.address.zip = this.getUser.address.zip;
+    }, 300);
   },
   methods: {
+    closeEditAcc() {
+      this.editAccModal = false;
+    },
     closeModal() {
       this.editModal = false;
       this.addModal = false;
+    },
+    toggleEditAcc() {
+      this.editAccModal = true;
+    },
+    editAcc() {
+      if (this.user.password !== "") {
+        this.$store.dispatch("user/editUser", this.user);
+      } else {
+        alert("Please fill your password");
+      }
     },
     newProduct() {
       this.$store.dispatch("products/newProduct", this.theProduct);

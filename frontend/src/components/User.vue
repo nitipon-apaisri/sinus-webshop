@@ -7,7 +7,14 @@
         <div class="account-info">
           <div class="mock-profile-img"></div>
           <div class="user-info">
-            <h1>Personal Infomation</h1>
+            <div class="info-header">
+              <h1>Personal Infomation</h1>
+              <font-awesome-icon
+                :icon="['fa', 'edit']"
+                size="2x"
+                @click="toggleEditAcc"
+              />
+            </div>
             <hr />
             <h2>{{ getUser.name }}</h2>
             <p class="role">{{ getUser.role }}</p>
@@ -41,6 +48,12 @@
           </div>
         </div>
       </div>
+      <EditUser
+        :user="this.user"
+        @editAcc="editAcc"
+        v-if="editAccModal"
+        @closeEditAcc="closeEditAcc"
+      />
       <section class="user-order-container">
         <h1>Order History</h1>
         <hr />
@@ -87,10 +100,34 @@
 
 <script>
 import { mapGetters, mapState } from "vuex";
+import EditUser from "./EditUser";
 export default {
+  components: {
+    EditUser,
+  },
+  data() {
+    return {
+      editAccModal: false,
+      user: {
+        name: "",
+        password: "",
+        address: {
+          street: "",
+          zip: "",
+          city: "",
+        },
+      },
+    };
+  },
   beforeMount() {
     this.$store.dispatch("user/userData");
     this.$store.dispatch("order/getOrder");
+    setTimeout(() => {
+      this.user.name = this.getUser.name;
+      this.user.address.street = this.getUser.address.street;
+      this.user.address.city = this.getUser.address.city;
+      this.user.address.zip = this.getUser.address.zip;
+    }, 300);
   },
   methods: {
     out() {
@@ -99,6 +136,19 @@ export default {
         this.$router.push("/");
         location.reload();
       }, 300);
+    },
+    closeEditAcc() {
+      this.editAccModal = false;
+    },
+    toggleEditAcc() {
+      this.editAccModal = true;
+    },
+    editAcc() {
+      if (this.user.password !== "") {
+        this.$store.dispatch("user/editUser", this.user);
+      } else {
+        alert("Please fill your password");
+      }
     },
   },
   computed: {
