@@ -42,41 +42,49 @@
         </div>
       </div>
       <section class="admin-container">
-        <h1>Products</h1>
-        <hr />
-        <div class="all-products">
-          <ul>
-            <li v-for="item in products" :key="item._id">
-              <div class="the-product">
-                <div class="product">
-                  <div class="product-img">
-                    <img
-                      :src="require(`../assets/${item.imgFile}`)"
-                      :alt="item.shortDesc"
-                    />
+        <div class="maintenance-product">
+          <div class="maintenance-products-header">
+            <h1>Products</h1>
+            <button @click="add">
+              <h2>NEW PRODUCT</h2>
+              <font-awesome-icon :icon="['fas', 'plus']" size="lg" />
+            </button>
+          </div>
+          <div class="all-products">
+            <ul>
+              <li v-for="item in products" :key="item._id">
+                <div class="the-product">
+                  <div class="product">
+                    <div class="product-img">
+                      <img
+                        :src="require(`../assets/${item.imgFile}`)"
+                        :alt="item.shortDesc"
+                      />
+                    </div>
+                  </div>
+                  <div class="product-info">
+                    <div class="product-title">
+                      <h4>{{ item.title }}</h4>
+                    </div>
+                    <div class="product-footer">
+                      <font-awesome-icon
+                        :icon="['fa', 'edit']"
+                        size="lg"
+                        @click="edit(item._id)"
+                      />
+                      <font-awesome-icon
+                        :icon="['fa', 'trash']"
+                        size="lg"
+                        @click="deleteProduct(item._id)"
+                      />
+                    </div>
                   </div>
                 </div>
-                <div class="product-info">
-                  <div class="product-title">
-                    <h4>{{ item.title }}</h4>
-                  </div>
-                  <div class="product-footer">
-                    <font-awesome-icon
-                      :icon="['fa', 'edit']"
-                      size="lg"
-                      @click="edit(item._id)"
-                    />
-                    <font-awesome-icon
-                      :icon="['fa', 'trash']"
-                      size="lg"
-                      @click="deleteProduct(item._id)"
-                    />
-                  </div>
-                </div>
-              </div>
-            </li>
-          </ul>
+              </li>
+            </ul>
+          </div>
         </div>
+        <hr />
       </section>
       <section class="user-order-container">
         <h1>Order</h1>
@@ -119,88 +127,34 @@
         </div>
       </section>
     </article>
-    <div class="edit-modal" v-if="editModal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 @click="closeModal">X</h3>
-        </div>
-        <div class="modal-product-content">
-          <div class="product-img">
-            <img
-              :src="require(`../assets/${this.theProduct.imgFile}`)"
-              :alt="this.theProduct.shortDesc"
-            />
-          </div>
-          <form @submit.prevent="changeInfo">
-            <h1>PRODUCT INFOMATION</h1>
-            <div class="product-input">
-              <div class="product-name">
-                <label for="productName">Product Name</label>
-                <input
-                  type="text"
-                  name="productName"
-                  v-model="theProduct.title"
-                />
-              </div>
-              <div class="product-imgFile-short-desc">
-                <div class="imgFile">
-                  <label for="productLongDesc">Image File</label>
-                  <input
-                    type="text"
-                    name="productLongDesc"
-                    v-model="theProduct.imgFile"
-                  />
-                </div>
-                <div class="short">
-                  <label for="productShortDesc">short Description</label>
-                  <input
-                    type="text"
-                    name="productShortDesc"
-                    v-model="theProduct.shortDesc"
-                  />
-                </div>
-              </div>
-              <div class="product-price-category">
-                <div class="price">
-                  <label for="price">Price</label>
-                  <input
-                    type="text"
-                    name="productLongDesc"
-                    v-model="theProduct.price"
-                  />
-                </div>
-                <div class="category">
-                  <label for="category">Category</label>
-                  <input
-                    type="text"
-                    name="category"
-                    v-model="theProduct.category"
-                  />
-                </div>
-              </div>
-              <div class="long-desc">
-                <label for="longDesc">Long Description</label>
-                <textarea
-                  type="text"
-                  name="longDesc"
-                  v-model="theProduct.longDesc"
-                />
-                <button><h3>Update</h3></button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
+    <EditModal
+      :theProduct="this.theProduct"
+      :editModal="this.editModal"
+      @closeModal="closeModal"
+      @changeInfo="changeInfo"
+    />
+    <AddModal
+      :theProduct="this.theProduct"
+      :addModal="this.addModal"
+      @closeModal="closeModal"
+      @newProduct="newProduct"
+    />
   </div>
 </template>
 
 <script>
+import EditModal from "./EditModal";
+import AddModal from "./AddModal";
 import { mapGetters, mapState } from "vuex";
 export default {
+  components: {
+    EditModal,
+    AddModal,
+  },
   data() {
     return {
       editModal: false,
+      addModal: false,
       theProduct: {
         category: "",
         imgFile: "",
@@ -222,9 +176,17 @@ export default {
   methods: {
     closeModal() {
       this.editModal = false;
+      this.addModal = false;
+    },
+    newProduct() {
+      this.$store.dispatch("products/newProduct", this.theProduct);
     },
     changeInfo() {
       this.$store.dispatch("products/changeProductInfo", this.theProduct);
+    },
+    add() {
+      this.addModal = true;
+      console.log("Hi");
     },
     edit(id) {
       this.$store.dispatch("products/getOneProduct", id);
