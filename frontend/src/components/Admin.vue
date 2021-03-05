@@ -66,7 +66,11 @@
                       size="lg"
                       @click="edit(item._id)"
                     />
-                    <font-awesome-icon :icon="['fa', 'trash']" size="lg" />
+                    <font-awesome-icon
+                      :icon="['fa', 'trash']"
+                      size="lg"
+                      @click="deleteProduct(item._id)"
+                    />
                   </div>
                 </div>
               </div>
@@ -235,6 +239,9 @@ export default {
         this.theProduct.title = this.product.title;
         this.theProduct._id = this.product._id;
       }, 300);
+    },
+    deleteProduct(id) {
+      this.$store.dispatch("products/deleteProduct", id);
     },
     out() {
       sessionStorage.removeItem("user");
