@@ -54,7 +54,7 @@
             <ul>
               <li v-for="item in products" :key="item._id">
                 <div class="the-product">
-                  <div class="product">
+                  <div class="product" @click="edit(item._id)">
                     <div class="product-img">
                       <img
                         :src="require(`../assets/${item.imgFile}`)"
@@ -157,7 +157,7 @@ export default {
       addModal: false,
       theProduct: {
         category: "",
-        imgFile: "",
+        imgFile: "dgk-zen.png",
         longDesc: "",
         shortDesc: "",
         price: 0,
@@ -186,6 +186,13 @@ export default {
     },
     add() {
       this.addModal = true;
+      this.theProduct.category = "";
+      this.theProduct.imgFile = this.product.imgFile;
+      this.theProduct.longDesc = "";
+      this.theProduct.shortDesc = "";
+      this.theProduct.price = "";
+      this.theProduct.title = "";
+      this.theProduct._id = "";
       console.log("Hi");
     },
     edit(id) {
@@ -216,8 +223,7 @@ export default {
   computed: {
     ...mapGetters("user", ["getUser"]),
     ...mapGetters("order", ["getUserOrder"]),
-    ...mapGetters("products", ["products"]),
-    ...mapGetters("products", ["product"]),
+    ...mapGetters("products", ["products", "product"]),
     ...mapState("user", ["loading"]),
   },
 };

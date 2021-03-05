@@ -6,10 +6,10 @@
       </div>
       <div class="modal-product-content">
         <div class="product-img">
-          <!-- <img
+          <img
             :src="require(`../assets/${this.theProduct.imgFile}`)"
             :alt="this.theProduct.shortDesc"
-          /> -->
+          />
         </div>
         <form @submit.prevent="$emit('newProduct')">
           <h1>PRODUCT INFOMATION</h1>
@@ -24,12 +24,16 @@
             </div>
             <div class="product-imgFile-short-desc">
               <div class="imgFile">
-                <label for="productLongDesc">Image File</label>
-                <input
-                  type="text"
-                  name="productLongDesc"
-                  v-model="theProduct.imgFile"
-                />
+                <label for="productImgFile">Image File</label>
+                <select name="productImgFile" v-model="theProduct.imgFile">
+                  <option
+                    v-for="(img, index) in getProductImg"
+                    :value="img"
+                    :key="index"
+                  >
+                    {{ img }}
+                  </option>
+                </select>
               </div>
               <div class="short">
                 <label for="productShortDesc">short Description</label>
@@ -75,10 +79,14 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   props: {
     theProduct: Object,
     addModal: Boolean,
+  },
+  computed: {
+    ...mapGetters(["getProductImg"]),
   },
 };
 </script>

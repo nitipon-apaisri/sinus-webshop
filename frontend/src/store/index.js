@@ -10,6 +10,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
    state: {
+      productsImaFile: ["dgk-bear.png", "dgk-buck.png", "dgk-deck.png", "dgk-kalis.png", "dgk-stevie.png", "dgk-zen.png"],
       mockUserContact: {},
       mockCreditCard: {
          cardNumber: "1234 5678 9101 1121",
@@ -40,6 +41,9 @@ export default new Vuex.Store({
       },
       getMockCreditCard(state) {
          return state.mockCreditCard;
+      },
+      getProductImg(state) {
+         return state.productsImaFile;
       },
    },
 });

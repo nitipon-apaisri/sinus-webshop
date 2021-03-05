@@ -1173,6 +1173,13 @@ main {
                      display: flex;
                      margin: 8px 0;
                      justify-content: space-between;
+                     .imgFile {
+                        select {
+                           background-color: $secondary-light-color;
+                           border: 1px solid transparent;
+                           padding: 12px 16px;
+                        }
+                     }
                      .imgFile,
                      .short {
                         @extend .input-info;
