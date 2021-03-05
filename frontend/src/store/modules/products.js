@@ -27,6 +27,14 @@ export default {
       changeProductInfo() {
          console.log("Changed");
       },
+      newProduct() {
+         console.log("Suc");
+      },
+      deleteProduct(state, id) {
+         const productId = state.allProducts.find((r) => r._id == id);
+         const productIndex = state.allProducts.indexOf(productId);
+         state.allProducts.splice(productIndex, 1);
+      },
    },
    actions: {
       async getAllProducts({ commit }) {
@@ -56,6 +64,23 @@ export default {
             api.patch(`/products/${product._id}`, payload);
             commit("changeProductInfo");
             location.reload();
+         } catch (err) {
+            return false;
+         }
+      },
+      async newProduct({ commit }, payload) {
+         try {
+            api.post(`/products/`, payload);
+            commit("newProduct");
+            location.reload();
+         } catch (err) {
+            return false;
+         }
+      },
+      async deleteProduct({ commit }, id) {
+         commit("deleteProduct", id);
+         try {
+            api.delete(`/products/${id}`);
          } catch (err) {
             return false;
          }
