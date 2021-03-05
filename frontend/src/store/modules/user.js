@@ -30,6 +30,9 @@ export default {
          state.user.address.zip = userInfo.address.zip;
          state.userStatus = true;
       },
+      editUser() {
+         console.log("Edited");
+      },
    },
    actions: {
       async userData({ commit }) {
@@ -42,6 +45,15 @@ export default {
                console.log(err);
             });
          commit("setLoader", true);
+      },
+      async editUser({ commit }, payload) {
+         try {
+            api.patch("/me", payload);
+            commit("editUser");
+            location.reload();
+         } catch (err) {
+            return false;
+         }
       },
    },
    getters: {

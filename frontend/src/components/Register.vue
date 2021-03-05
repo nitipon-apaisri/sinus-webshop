@@ -78,6 +78,9 @@ export default {
   methods: {
     register() {
       this.$store.dispatch("register/addUser", this.user);
+      setTimeout(() => {
+        this.$router.push("/auth");
+      }, 300);
     },
   },
 };
